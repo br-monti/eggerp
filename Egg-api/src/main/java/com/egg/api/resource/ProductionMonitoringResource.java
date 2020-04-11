@@ -9,16 +9,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.egg.api.event.ResourceCreatedEvent;
 import com.egg.api.model.ProductionMonitoring;
 import com.egg.api.repository.ProductionMonitoringRepository;
+import com.egg.api.service.ProductionMonitoringService;
 
 @RestController
 @RequestMapping("/ProductionMonitorings")
@@ -26,6 +30,9 @@ public class ProductionMonitoringResource {
 
 	@Autowired
 	private ProductionMonitoringRepository productionMonitoringRepository;
+	
+	@Autowired
+	private ProductionMonitoringService productionMonitoringService;
 	
 	@Autowired
 	private ApplicationEventPublisher publisher;
@@ -50,4 +57,19 @@ public class ProductionMonitoringResource {
 		ProductionMonitoring productionMonitoring = productionMonitoringRepository.findById(id).orElse(null);
 		 return productionMonitoring != null ? ResponseEntity.ok(productionMonitoring) : ResponseEntity.notFound().build();
 	}
+	
+	@DeleteMapping("/{id}")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	//@PreAuthorize("hasAuthority('ROLE_REMOVER_PESSOA') and #oauth2.hasScope('write')")
+	public void deleteById(@PathVariable Long id) {
+		productionMonitoringRepository.deleteById(id);
+	}
+	
+	@PutMapping("/{id}")
+	//@PreAuthorize("hasAuthority('ROLE_CADASTRAR_PESSOA') and #oauth2.hasScope('write')")
+	public ResponseEntity<ProductionMonitoring> update(@PathVariable Long id, @Valid @RequestBody ProductionMonitoring producutionMonitoring) {
+		ProductionMonitoring producutionMonitoringSaved = productionMonitoringService.update(id, producutionMonitoring);
+		return ResponseEntity.ok(producutionMonitoringSaved);
+	}
+
 }

@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.egg.api.model.ShedManufacturer;
 
-public interface ShedManufacurerRepository extends JpaRepository<ShedManufacturer, Long> {
+public interface ShedManufacturerRepository extends JpaRepository<ShedManufacturer, Long> {
 
 }
