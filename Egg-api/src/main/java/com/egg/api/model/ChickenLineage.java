@@ -1,5 +1,6 @@
 package com.egg.api.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,6 +18,13 @@ public class ChickenLineage {
 	
 	@NotNull
 	private String lineage;
+	
+	@NotNull
+	@Column(name = "chicken_color")
+	private String chickenColor;
+	
+	@NotNull
+	private String provider;
 
 	public Long getId() {
 		return id;
@@ -32,6 +40,22 @@ public class ChickenLineage {
 
 	public void setLineage(String lineage) {
 		this.lineage = lineage;
+	}
+
+	public String getChickenColor() {
+		return chickenColor;
+	}
+
+	public void setChickenColor(String chickenColor) {
+		this.chickenColor = chickenColor;
+	}
+
+	public String getProvider() {
+		return provider;
+	}
+
+	public void setProvider(String provider) {
+		this.provider = provider;
 	}
 
 	@Override

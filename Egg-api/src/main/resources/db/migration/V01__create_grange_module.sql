@@ -1,13 +1,15 @@
 CREATE TABLE chicken_lineage (
 	id INT NOT NULL AUTO_INCREMENT,
 	lineage VARCHAR(15) NOT NULL,
+    chicken_color VARCHAR(15) NOT NULL,
+    provider VARCHAR(15) NOT NULL,
 	PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO chicken_lineage (lineage) values ('Nick-Chick');
-INSERT INTO chicken_lineage (lineage) values ('Nick-Brown');
-INSERT INTO chicken_lineage (lineage) values ('W-80');
-INSERT INTO chicken_lineage (lineage) values ('Hy-Line');
+INSERT INTO chicken_lineage (lineage, chicken_color, provider) values ('Nick-Chick', 'Branca', 'H e N');
+INSERT INTO chicken_lineage (lineage, chicken_color, provider) values ('Nick-Brown', 'Vermelha', 'H e N');
+INSERT INTO chicken_lineage (lineage, chicken_color, provider) values ('W-80',  'Branca', 'Hy-Line');
+INSERT INTO chicken_lineage (lineage, chicken_color, provider) values ('Hy-Line Brown',  'Vermelha', 'Hy-Line');
 
 CREATE TABLE shed_manufacturer (
 	id INT NOT NULL AUTO_INCREMENT,
