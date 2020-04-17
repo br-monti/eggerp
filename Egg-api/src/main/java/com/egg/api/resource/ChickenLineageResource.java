@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.egg.api.event.ResourceCreatedEvent;
 import com.egg.api.model.ChickenLineage;
 import com.egg.api.repository.ChickenLineageRepository;
+import com.egg.api.repository.filter.ChickenLineageFilter;
 import com.egg.api.service.ChickenLineageService;
 
 @RestController
@@ -39,7 +40,7 @@ public class ChickenLineageResource {
 	
 	@GetMapping
 	//@PreAuthorize("hasAuthority('ROLE_PESQUISAR_CATEGORIA') and #oauth2.hasScope('read')") TODO: Casdastrar role
-	public List<ChickenLineage> findAll() {
+	public List<ChickenLineage> findByChickenLineage(ChickenLineageFilter chickenLineageFilter) {
 		return chickenLineageRepository.findAll();
 	}
 	
