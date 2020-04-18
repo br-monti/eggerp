@@ -25,6 +25,9 @@ import com.egg.api.repository.ChickenLineageRepository;
 import com.egg.api.repository.filter.ChickenLineageFilter;
 import com.egg.api.service.ChickenLineageService;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 @RestController
 @RequestMapping("/ChickenLineages")
 public class ChickenLineageResource {
@@ -40,8 +43,8 @@ public class ChickenLineageResource {
 	
 	@GetMapping
 	//@PreAuthorize("hasAuthority('ROLE_PESQUISAR_CATEGORIA') and #oauth2.hasScope('read')") TODO: Casdastrar role
-	public List<ChickenLineage> findByChickenLineage(ChickenLineageFilter chickenLineageFilter) {
-		return chickenLineageRepository.findAll();
+	public Page<ChickenLineage> findByFilter(ChickenLineageFilter chickenLineageFilter, Pageable pageable) {
+		return chickenLineageRepository.findByFilter(chickenLineageFilter, pageable);
 	}
 	
 	@PostMapping

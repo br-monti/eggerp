@@ -5,12 +5,12 @@ public class ChickenLineageFilter {
 	private String lineage;
 	
 
-	public String getDescricao() {
+	public String getLineage() {
 		return lineage;
 	}
 
-	public void setDescricao(String descricao) {
-		this.lineage = descricao;
+	public void setLineage(String lineage) {
+		this.lineage = lineage;
 	}
 
 	
