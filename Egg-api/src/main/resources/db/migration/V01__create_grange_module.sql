@@ -10,6 +10,10 @@ INSERT INTO chicken_lineage (lineage, chicken_color, provider) values ('Nick-Chi
 INSERT INTO chicken_lineage (lineage, chicken_color, provider) values ('Nick-Brown', 'Vermelha', 'H e N');
 INSERT INTO chicken_lineage (lineage, chicken_color, provider) values ('W-80',  'Branca', 'Hy-Line');
 INSERT INTO chicken_lineage (lineage, chicken_color, provider) values ('Hy-Line Brown',  'Vermelha', 'Hy-Line');
+INSERT INTO chicken_lineage (lineage, chicken_color, provider) values ('Nick-Chick1', 'Branca', 'H e N');
+INSERT INTO chicken_lineage (lineage, chicken_color, provider) values ('Nick-Brown2', 'Vermelha', 'H e N');
+INSERT INTO chicken_lineage (lineage, chicken_color, provider) values ('W-802',  'Branca', 'Hy-Line');
+INSERT INTO chicken_lineage (lineage, chicken_color, provider) values ('Hy-Line Brown2',  'Vermelha', 'Hy-Line');
 
 CREATE TABLE shed_manufacturer (
 	id INT NOT NULL AUTO_INCREMENT,

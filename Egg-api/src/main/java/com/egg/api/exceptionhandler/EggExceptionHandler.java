@@ -20,6 +20,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 @ControllerAdvice
@@ -61,6 +62,8 @@ public class EggExceptionHandler extends ResponseEntityExceptionHandler {
 		List<Error> errors = Arrays.asList(new Error(userMessage, developerMessage));
 		return handleExceptionInternal(ex, errors, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
 	}
+	
+	//TODO: Implementar exception para exclusão de registro com associado 
 	
 	private List<Error> createErrorsList(BindingResult bindingResult) {
 		List<Error> errors = new ArrayList<>();
