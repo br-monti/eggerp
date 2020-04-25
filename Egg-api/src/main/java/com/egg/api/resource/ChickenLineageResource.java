@@ -1,12 +1,12 @@
 package com.egg.api.resource;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -24,9 +24,6 @@ import com.egg.api.model.ChickenLineage;
 import com.egg.api.repository.ChickenLineageRepository;
 import com.egg.api.repository.filter.ChickenLineageFilter;
 import com.egg.api.service.ChickenLineageService;
-
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 
 @RestController
 @RequestMapping("/ChickenLineages")

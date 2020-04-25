@@ -7,6 +7,8 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -20,8 +22,11 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.egg.api.event.ResourceCreatedEvent;
+import com.egg.api.model.ChickenLineage;
 import com.egg.api.model.Shed;
 import com.egg.api.repository.ShedRepository;
+import com.egg.api.repository.filter.ChickenLineageFilter;
+import com.egg.api.repository.filter.ShedFilter;
 import com.egg.api.service.ShedService;
 
 @RestController
@@ -39,8 +44,8 @@ public class ShedResource {
 	
 	@GetMapping
 	//@PreAuthorize("hasAuthority('ROLE_PESQUISAR_CATEGORIA') and #oauth2.hasScope('read')") TODO: Casdastrar role
-	public List<Shed> findAll() {
-		return shedRepository.findAll();
+	public Page<Shed> findByFilter(ShedFilter shedFilter, Pageable pageable) {
+		return shedRepository.findByFilter(shedFilter, pageable);
 	}
 	
 	@PostMapping
