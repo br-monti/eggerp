@@ -16,6 +16,7 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 
+<<<<<<< HEAD
 import com.egg.api.model.Shed;
 import com.egg.api.model.Shed_;
 import com.egg.api.repository.filter.ShedFilter;
@@ -69,6 +70,61 @@ public class ShedRepositoryImpl implements ShedRepositoryQuery {
 		if (!StringUtils.isEmpty(shedFilter.getName())) {
 			predicates.add(builder.like(
 					builder.lower(root.get(Shed_.name)), "%" + shedFilter.getName().toLowerCase() + "%"));
+=======
+import com.egg.api.model.ChickenLineage;
+import com.egg.api.model.ChickenLineage_;
+import com.egg.api.repository.filter.ChickenLineageFilter;
+
+public class ShedRepositoryImpl implements ChickenLineageRepositoryQuery {
+	
+	@PersistenceContext
+	private EntityManager manager;
+
+	@Override
+	public Page<ChickenLineage> findByFilter(ChickenLineageFilter chickenLineageFilter, Pageable pageable) {
+		CriteriaBuilder builder = manager.getCriteriaBuilder();
+		CriteriaQuery<ChickenLineage> criteria = builder.createQuery(ChickenLineage.class);
+		Root<ChickenLineage> root = criteria.from(ChickenLineage.class);
+		
+		Predicate[] predicates = createRestrictions(chickenLineageFilter, builder, root);
+		criteria.where(predicates);
+		
+		TypedQuery<ChickenLineage> query = manager.createQuery(criteria);
+		addPaginationRestrictions(query, pageable);
+		
+		return new PageImpl<>(query.getResultList(), pageable, total(chickenLineageFilter));
+	}
+
+	private Long total(ChickenLineageFilter chickenLineageFilter) {
+		CriteriaBuilder builder = manager.getCriteriaBuilder();
+		CriteriaQuery<Long> criteria = builder.createQuery(Long.class);
+		Root<ChickenLineage> root = criteria.from(ChickenLineage.class);
+		
+		Predicate[] predicates = createRestrictions(chickenLineageFilter, builder, root);
+		criteria.where(predicates);
+		
+		criteria.select(builder.count(root));
+		return manager.createQuery(criteria).getSingleResult();
+	}
+
+	private void addPaginationRestrictions(TypedQuery<ChickenLineage> query, Pageable pageable) {
+		int currentPage = pageable.getPageNumber();
+		int totalRegisterByPage = pageable.getPageSize();
+		int firstPageRegister = currentPage * totalRegisterByPage;
+		
+		query.setFirstResult(firstPageRegister);
+		query.setMaxResults(totalRegisterByPage);
+		
+	}
+
+	private Predicate[] createRestrictions(ChickenLineageFilter chickenLineageFilter, CriteriaBuilder builder,
+			Root<ChickenLineage> root) {
+		List<Predicate> predicates = new ArrayList<>();
+		
+		if (!StringUtils.isEmpty(chickenLineageFilter.getLineage())) {
+			predicates.add(builder.like(
+					builder.lower(root.get(ChickenLineage_.lineage)), "%" + chickenLineageFilter.getLineage().toLowerCase() + "%"));
+>>>>>>> branch 'master' of https://github.com/br-monti/eggerp.git
 		}		
 		
 		return predicates.toArray(new Predicate[predicates.size()]);

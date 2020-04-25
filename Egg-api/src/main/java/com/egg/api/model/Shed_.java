@@ -9,7 +9,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 public abstract class Shed_ {
 
 	public static volatile SingularAttribute<Shed, ShedManufacturer> shedManufacturer;
-	public static volatile SingularAttribute<Shed, String> name;
+	public static volatile String name;
 	public static volatile SingularAttribute<Shed, String> model;
 	public static volatile SingularAttribute<Shed, Long> id;
 	public static volatile SingularAttribute<Shed, String> type;
