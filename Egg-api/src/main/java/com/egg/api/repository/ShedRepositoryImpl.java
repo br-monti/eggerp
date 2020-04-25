@@ -69,10 +69,8 @@ public class ShedRepositoryImpl implements ShedRepositoryQuery {
 		if (!StringUtils.isEmpty(shedFilter.getName())) {
 			predicates.add(builder.like(
 					builder.lower(root.get(Shed_.name)), "%" + shedFilter.getName().toLowerCase() + "%"));
+			
 		}
-
 		return predicates.toArray(new Predicate[predicates.size()]);
 	}
-
 }
-
