@@ -22,11 +22,11 @@ public class ChickenLot {
 	
 	@NotNull
 	@Column(name = "birth_date")
-	private LocalDate birth_date;
+	private LocalDate birthDate;
 	
 	@NotNull
 	@Column(name = "accommodation_date")
-	private LocalDate accommodation_date;
+	private LocalDate accommodationDate;
 	
 	@NotNull
 	@Column(name = "initial_quantity")
@@ -57,20 +57,20 @@ public class ChickenLot {
 		this.id = id;
 	}
 
-	public LocalDate getBirth_date() {
-		return birth_date;
+	public LocalDate getBirthDate() {
+		return birthDate;
 	}
 
-	public void setBirth_date(LocalDate birth_date) {
-		this.birth_date = birth_date;
+	public void setBirthDate(LocalDate birthDate) {
+		this.birthDate = birthDate;
 	}
 
-	public LocalDate getAccommodation_date() {
-		return accommodation_date;
+	public LocalDate getAccommodationDate() {
+		return accommodationDate;
 	}
 
-	public void setAccommodation_date(LocalDate accommodation_date) {
-		this.accommodation_date = accommodation_date;
+	public void setAccommodationDate(LocalDate accommodationDate) {
+		this.accommodationDate = accommodationDate;
 	}
 
 	public int getInitialQuantity() {
