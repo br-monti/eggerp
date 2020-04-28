@@ -1,4 +1,4 @@
-package com.egg.api.repository;
+package com.egg.api.repository.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +19,7 @@ import org.springframework.util.StringUtils;
 import com.egg.api.model.Shed;
 import com.egg.api.model.Shed_;
 import com.egg.api.repository.filter.ShedFilter;
+import com.egg.api.repository.query.ShedRepositoryQuery;
 
 public class ShedRepositoryImpl implements ShedRepositoryQuery {
 	

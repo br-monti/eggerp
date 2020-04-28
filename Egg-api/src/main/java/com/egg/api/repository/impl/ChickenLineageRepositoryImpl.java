@@ -1,4 +1,4 @@
-package com.egg.api.repository;
+package com.egg.api.repository.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +19,7 @@ import org.springframework.util.StringUtils;
 import com.egg.api.model.ChickenLineage;
 import com.egg.api.model.ChickenLineage_;
 import com.egg.api.repository.filter.ChickenLineageFilter;
+import com.egg.api.repository.query.ChickenLineageRepositoryQuery;
 
 public class ChickenLineageRepositoryImpl implements ChickenLineageRepositoryQuery {
 	
