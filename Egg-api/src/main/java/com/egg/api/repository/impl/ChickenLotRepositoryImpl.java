@@ -14,7 +14,6 @@ import javax.persistence.criteria.Root;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
-import org.springframework.util.StringUtils;
 
 import com.egg.api.model.ChickenLot;
 import com.egg.api.model.ChickenLot_;
@@ -67,18 +66,23 @@ public class ChickenLotRepositoryImpl implements ChickenLotRepositoryQuery {
 			Root<ChickenLot> root) {
 		List<Predicate> predicates = new ArrayList<>();
 		
-		if (!StringUtils.isEmpty(chickenLotFilter.getId())) {
-			predicates.add(builder.like(root.get(ChickenLot_.id.toString()), "%" + chickenLotFilter.getId() + "%"));
+//		if (!StringUtils.isEmpty(chickenLotFilter.getId())) {
+//			predicates.add(builder.like(root.get(ChickenLot_.id.toString()), "%" + chickenLotFilter.getId() + "%"));
+//		}
+		
+		if (chickenLotFilter.getId() != null) {
+			predicates.add(builder.and(
+					builder.equal((root.get(ChickenLot_.id)), chickenLotFilter.getId())));
 		}
 		
 		if (chickenLotFilter.getBirthDateInitial() != null) {
 			predicates.add(
-					builder.greaterThanOrEqualTo(root.get(ChickenLot_.birthDate), chickenLotFilter.getBirthDateInitial()));
+					builder.greaterThanOrEqualTo((root.get(ChickenLot_.birthDate)), chickenLotFilter.getBirthDateInitial()));
 		}
 		
 		if (chickenLotFilter.getBirthDateFinal() != null) {
 			predicates.add(
-					builder.lessThanOrEqualTo(root.get(ChickenLot_.birthDate), chickenLotFilter.getBirthDateInitial()));
+					builder.lessThanOrEqualTo((root.get(ChickenLot_.birthDate)), chickenLotFilter.getBirthDateInitial()));
 		}
 		
 		return predicates.toArray(new Predicate[predicates.size()]);
