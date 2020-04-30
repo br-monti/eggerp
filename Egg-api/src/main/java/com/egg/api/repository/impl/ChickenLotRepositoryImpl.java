@@ -82,7 +82,7 @@ public class ChickenLotRepositoryImpl implements ChickenLotRepositoryQuery {
 		
 		if (chickenLotFilter.getBirthDateFinal() != null) {
 			predicates.add(
-					builder.lessThanOrEqualTo((root.get(ChickenLot_.birthDate)), chickenLotFilter.getBirthDateInitial()));
+					builder.lessThanOrEqualTo((root.get(ChickenLot_.birthDate)), chickenLotFilter.getBirthDateFinal()));
 		}
 		
 		return predicates.toArray(new Predicate[predicates.size()]);

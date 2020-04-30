@@ -57,13 +57,13 @@ CREATE TABLE chicken_lot (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO chicken_lot (birth_date, accommodation_date, initial_quantity, current_quantity, debicking, chicken_lineage_id, shed_id) 
-values ('2020-03-20', '2020-03-20', 10200, 10200, 'Convencional', 1, 1);
+values ('2020-03-20', '2020-03-21', 10200, 10200, 'Convencional', 1, 1);
 INSERT INTO chicken_lot (birth_date, accommodation_date, initial_quantity, current_quantity, debicking, chicken_lineage_id, shed_id) 
-values ('2020-03-21', '2020-03-21', 10100, 10100, 'Convencional', 1, 1);
+values ('2020-03-22', '2020-03-23', 10100, 10100, 'Convencional', 1, 1);
 INSERT INTO chicken_lot (birth_date, accommodation_date, initial_quantity, current_quantity, debicking, chicken_lineage_id, shed_id) 
-values ('2020-03-20', '2020-03-20', 10200, 10200, 'Convencional', 1, 1);
+values ('2020-03-24', '2020-03-25', 10200, 10200, 'Convencional', 1, 1);
 INSERT INTO chicken_lot (birth_date, accommodation_date, initial_quantity, current_quantity, debicking, chicken_lineage_id, shed_id) 
-values ('2020-03-20', '2020-03-20', 10200, 10200, 'Convencional', 1, 1);
+values ('2020-03-26', '2020-03-27', 10200, 10200, 'Convencional', 1, 1);
 
 CREATE TABLE creation_monitoring (
   id INT NOT NULL AUTO_INCREMENT,
