@@ -85,6 +85,11 @@ public class ChickenLotRepositoryImpl implements ChickenLotRepositoryQuery {
 					builder.lessThanOrEqualTo((root.get(ChickenLot_.birthDate)), chickenLotFilter.getBirthDateFinal()));
 		}
 		
+		if (chickenLotFilter.getShed() != null) {
+			predicates.add(builder.and(
+					builder.equal((root.get(ChickenLot_.shed)), chickenLotFilter.getShed().getId())));
+		}
+		
 		return predicates.toArray(new Predicate[predicates.size()]);
 	}
 
