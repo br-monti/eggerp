@@ -1,12 +1,12 @@
 package com.egg.api.resource;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.egg.api.event.ResourceCreatedEvent;
 import com.egg.api.model.CreationMonitoring;
 import com.egg.api.repository.CreationMonitoringRepository;
+import com.egg.api.repository.filter.CreationMonitoringFilter;
 import com.egg.api.service.CreationMonitoringService;
 
 @RestController
@@ -39,8 +40,8 @@ public class CreationMonitoringResource {
 	
 	@GetMapping
 	//@PreAuthorize("hasAuthority('ROLE_PESQUISAR_CATEGORIA') and #oauth2.hasScope('read')") TODO: Casdastrar role
-	public List<CreationMonitoring> findAll() {
-		return creationMonitoringRepository.findAll();
+	public Page<CreationMonitoring> findByFilter(CreationMonitoringFilter creationMonitoringFilter, Pageable pageable) {
+		return creationMonitoringRepository.findByFilter(creationMonitoringFilter, pageable);
 	}
 	
 	@PostMapping
