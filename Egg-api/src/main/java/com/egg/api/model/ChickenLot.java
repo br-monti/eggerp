@@ -48,6 +48,12 @@ public class ChickenLot {
 	@ManyToOne
 	@JoinColumn(name = "shed_id")
 	private Shed shed;
+	
+	@NotNull
+	@ManyToOne
+	@JoinColumn(name = "egg_lot_id")
+	private EggLot eggLot;
+
 
 	public Long getId() {
 		return id;
@@ -112,6 +118,15 @@ public class ChickenLot {
 	public void setShed(Shed shed) {
 		this.shed = shed;
 	}
+	
+	public EggLot getEggLot() {
+		return eggLot;
+	}
+
+	public void setEggLot(EggLot eggLot) {
+		this.eggLot = eggLot;
+	}
+
 
 	@Override
 	public int hashCode() {
