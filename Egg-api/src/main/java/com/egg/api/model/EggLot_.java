@@ -12,9 +12,5 @@ public abstract class EggLot_ {
 	public static volatile SingularAttribute<EggLot, String> boxColor;
 	public static volatile SingularAttribute<EggLot, Long> id;
 
-	public static final String NAME = "name";
-	public static final String BOX_COLOR = "boxColor";
-	public static final String ID = "id";
-
 }
 
