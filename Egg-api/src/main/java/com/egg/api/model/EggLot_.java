@@ -1,6 +1,7 @@
 package com.egg.api.model;
 
 import javax.annotation.Generated;
+import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
@@ -8,6 +9,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 @StaticMetamodel(EggLot.class)
 public abstract class EggLot_ {
 
+	public static volatile ListAttribute<EggLot, ChickenLot> chickenLots;
 	public static volatile SingularAttribute<EggLot, String> name;
 	public static volatile SingularAttribute<EggLot, String> boxColor;
 	public static volatile SingularAttribute<EggLot, Long> id;
