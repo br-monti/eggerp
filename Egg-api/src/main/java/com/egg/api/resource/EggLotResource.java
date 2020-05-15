@@ -47,7 +47,7 @@ public class EggLotResource {
 	@PostMapping
 	//@PreAuthorize("hasAuthority('ROLE_CADASTRAR_CATEGORIA') and #oauth2.hasScope('write')") TODO: Casdastrar role
 	public ResponseEntity<EggLot> create(@Valid @RequestBody EggLot eggLot, HttpServletResponse response) {
-		EggLot eggLotSaved = eggLotRepository.save(eggLot);
+		EggLot eggLotSaved = eggLotService.save(eggLot);
 		publisher.publishEvent(new ResourceCreatedEvent(this, response, eggLotSaved.getId()));
 		return ResponseEntity.status(HttpStatus.CREATED).body(eggLotSaved);
 	}

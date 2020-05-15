@@ -49,7 +49,7 @@ public class ChickenLot {
 	@JoinColumn(name = "shed_id")
 	private Shed shed;
 	
-	@NotNull
+	
 	@ManyToOne
 	@JoinColumn(name = "egg_lot_id")
 	private EggLot eggLot;

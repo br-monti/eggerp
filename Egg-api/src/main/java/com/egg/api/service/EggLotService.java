@@ -17,7 +17,11 @@ public class EggLotService {
 	public EggLot update(Long id, EggLot eggLot) {
 		EggLot eggLotSaved = findEggLotById(id);
 		
-		BeanUtils.copyProperties(eggLot, eggLotSaved, "id");
+		eggLotSaved.getChickenLots().clear();
+		eggLotSaved.getChickenLots().addAll(eggLot.getChickenLots());		
+		eggLotSaved.getChickenLots().forEach(c -> c.setEggLot(eggLotSaved));
+		
+		BeanUtils.copyProperties(eggLot, eggLotSaved, "id", "chickenLots");
 		return eggLotRepository.save(eggLotSaved);
 	}
 
@@ -28,6 +32,12 @@ public class EggLotService {
 			throw new EmptyResultDataAccessException(1);
 		}
 		return eggLotSaved;
+	}
+
+
+	public EggLot save(EggLot eggLot) {
+		eggLot.getChickenLots().forEach(c -> c.setEggLot(eggLot));
+		return eggLotRepository.save(eggLot);
 	}
 
 }
