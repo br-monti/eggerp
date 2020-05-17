@@ -17,9 +17,9 @@ public class EggLotService {
 	public EggLot update(Long id, EggLot eggLot) {
 		EggLot eggLotSaved = findEggLotById(id);
 		
-		eggLotSaved.getChickenLots().clear();
-		eggLotSaved.getChickenLots().addAll(eggLot.getChickenLots());		
-		eggLotSaved.getChickenLots().forEach(c -> c.setEggLot(eggLotSaved));
+		//eggLotSaved.getChickenLots().clear();
+		//eggLotSaved.getChickenLots().addAll(eggLot.getChickenLots());		
+		//eggLotSaved.getChickenLots().forEach(c -> c.setEggLot(eggLotSaved));
 		
 		BeanUtils.copyProperties(eggLot, eggLotSaved, "id", "chickenLots");
 		return eggLotRepository.save(eggLotSaved);
@@ -36,7 +36,7 @@ public class EggLotService {
 
 
 	public EggLot save(EggLot eggLot) {
-		eggLot.getChickenLots().forEach(c -> c.setEggLot(eggLot));
+		//eggLot.getChickenLots().forEach(c -> c.setEggLot(eggLot));
 		return eggLotRepository.save(eggLot);
 	}
 

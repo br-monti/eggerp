@@ -49,10 +49,10 @@ public class ChickenLot {
 	@JoinColumn(name = "shed_id")
 	private Shed shed;
 	
-	
-	@ManyToOne
-	@JoinColumn(name = "egg_lot_id")
-	private EggLot eggLot;
+//	@NotNull
+//	@ManyToOne
+//	@JoinColumn(name = "egg_lot_id")
+//	private EggLot eggLot;
 
 
 	public Long getId() {
@@ -119,13 +119,13 @@ public class ChickenLot {
 		this.shed = shed;
 	}
 	
-	public EggLot getEggLot() {
-		return eggLot;
-	}
-
-	public void setEggLot(EggLot eggLot) {
-		this.eggLot = eggLot;
-	}
+//	public EggLot getEggLot() {
+//		return eggLot;
+//	}
+//
+//	public void setEggLot(EggLot eggLot) {
+//		this.eggLot = eggLot;
+//	}
 
 
 	@Override
