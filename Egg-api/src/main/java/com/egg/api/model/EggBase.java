@@ -25,7 +25,7 @@ public class EggBase {
 	
 	@NotNull
 	@Column(name = "production_date")
-	private LocalDate productionDate;
+	private LocalDate productionDate; 
 	
 	@NotNull
 	@Column(name = "validity_date")
@@ -34,6 +34,9 @@ public class EggBase {
 	@ManyToOne
 	@JoinColumn(name = "egg_lot_id")
 	private EggLot eggLot;
+	
+	
+
 
 	public Long getId() {
 		return id;
@@ -57,6 +60,23 @@ public class EggBase {
 
 	public void setEggLot(EggLot eggLot) {
 		this.eggLot = eggLot;
+	}
+	
+
+	public LocalDate getProductionDate() {
+		return productionDate;
+	}
+
+	public void setProductionDate(LocalDate productionDate) {
+		this.productionDate = productionDate;
+	}
+
+	public LocalDate getValidityDate() {
+		return validityDate;
+	}
+
+	public void setValidityDate(LocalDate validityDate) {
+		this.validityDate = validityDate;
 	}
 
 	@Override
