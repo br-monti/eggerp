@@ -24,20 +24,5 @@ public abstract class ProductionMonitoring_ {
 	public static volatile SingularAttribute<ProductionMonitoring, LocalDate> dateWeek;
 	public static volatile SingularAttribute<ProductionMonitoring, Integer> secondEggs;
 
-	public static final String DISCARD = "discard";
-	public static final String AGE_WEEK = "ageWeek";
-	public static final String WATER = "water";
-	public static final String EGG_WEIGHT = "eggWeight";
-	public static final String CHICKEN_LOT = "chickenLot";
-	public static final String FOOD = "food";
-	public static final String TOTAL_PRODUCTION = "totalProduction";
-	public static final String MORTALITY = "mortality";
-	public static final String FIRST_EGGS = "firstEggs";
-	public static final String ID = "id";
-	public static final String AGE_DAY = "ageDay";
-	public static final String BODY_WEIGHT = "bodyWeight";
-	public static final String DATE_WEEK = "dateWeek";
-	public static final String SECOND_EGGS = "secondEggs";
-
 }
 
