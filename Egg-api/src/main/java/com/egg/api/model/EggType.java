@@ -1,7 +1,5 @@
 package com.egg.api.model;
 
-import java.time.LocalDate;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,11 +24,11 @@ public class EggType {
 	
 	@NotNull
 	@Column(name = "min_weight")
-	private LocalDate minWeight; 
+	private int minWeight; 
 	
 	@NotNull
 	@Column(name = "max_weight")
-	private LocalDate maxWeight;
+	private int maxWeight;
 
 	public Long getId() {
 		return id;
@@ -56,19 +54,19 @@ public class EggType {
 		this.category = category;
 	}
 
-	public LocalDate getMinWeight() {
+	public int getMinWeight() {
 		return minWeight;
 	}
 
-	public void setMinWeight(LocalDate minWeight) {
+	public void setMinWeight(int minWeight) {
 		this.minWeight = minWeight;
 	}
 
-	public LocalDate getMaxWeight() {
+	public int getMaxWeight() {
 		return maxWeight;
 	}
 
-	public void setMaxWeight(LocalDate maxWeight) {
+	public void setMaxWeight(int maxWeight) {
 		this.maxWeight = maxWeight;
 	}
 

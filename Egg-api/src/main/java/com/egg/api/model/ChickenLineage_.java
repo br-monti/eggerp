@@ -13,5 +13,10 @@ public abstract class ChickenLineage_ {
 	public static volatile SingularAttribute<ChickenLineage, String> provider;
 	public static volatile SingularAttribute<ChickenLineage, Long> id;
 
+	public static final String LINEAGE = "lineage";
+	public static final String CHICKEN_COLOR = "chickenColor";
+	public static final String PROVIDER = "provider";
+	public static final String ID = "id";
+
 }
 
