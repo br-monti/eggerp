@@ -1,8 +1,5 @@
 package com.egg.api.model;
 
-import java.time.LocalDate;
-
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,8 +10,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "egg_base")
-public class EggBase {
+@Table(name = "classification")
+public class Classification {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,17 +20,13 @@ public class EggBase {
 	@NotNull
 	private int quantity;
 	
-	@NotNull
-	@Column(name = "production_date")
-	private LocalDate productionDate; 
-	
-	@NotNull
-	@Column(name = "validity_date")
-	private LocalDate validityDate;
+	@ManyToOne
+	@JoinColumn(name = "egg_type_id")
+	private EggType eggType;
 	
 	@ManyToOne
-	@JoinColumn(name = "egg_lot_id")
-	private EggLot eggLot;
+	@JoinColumn(name = "egg_base_id")
+	private EggBase eggBase;
 
 	public Long getId() {
 		return id;
@@ -51,29 +44,20 @@ public class EggBase {
 		this.quantity = quantity;
 	}
 
-	public EggLot getEggLot() {
-		return eggLot;
+	public EggType getEggType() {
+		return eggType;
 	}
 
-	public void setEggLot(EggLot eggLot) {
-		this.eggLot = eggLot;
-	}
-	
-
-	public LocalDate getProductionDate() {
-		return productionDate;
+	public void setEggType(EggType eggType) {
+		this.eggType = eggType;
 	}
 
-	public void setProductionDate(LocalDate productionDate) {
-		this.productionDate = productionDate;
+	public EggBase getEggBase() {
+		return eggBase;
 	}
 
-	public LocalDate getValidityDate() {
-		return validityDate;
-	}
-
-	public void setValidityDate(LocalDate validityDate) {
-		this.validityDate = validityDate;
+	public void setEggBase(EggBase eggBase) {
+		this.eggBase = eggBase;
 	}
 
 	@Override
@@ -92,7 +76,7 @@ public class EggBase {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		EggBase other = (EggBase) obj;
+		Classification other = (Classification) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -100,7 +84,5 @@ public class EggBase {
 			return false;
 		return true;
 	}
-
-
 	
 }

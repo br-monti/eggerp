@@ -3,15 +3,23 @@ CREATE TABLE egg_lot (
 	name VARCHAR(15) NOT NULL,
     box_color VARCHAR(15),
 	PRIMARY KEY (id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+
+INSERT INTO egg_lot (name, box_color) values ('L1', 'Laranja');
+INSERT INTO egg_lot (name, box_color) values ('L2', 'Verde');
+INSERT INTO egg_lot (name, box_color) values ('L3',  'Vermelha');
 
 ALTER TABLE chicken_lot ADD egg_lot_id INT;
 ALTER TABLE chicken_lot ADD FOREIGN KEY (egg_lot_id) REFERENCES egg_lot(id);
 
-INSERT INTO egg_lot (name, box_color) values ('L1', 'Laranja');
-INSERT INTO egg_lot (name, box_color) values ('L2', 'Verde');
-INSERT INTO egg_lot (name, box_color) values ('L3', 'Vermelha');
-
+INSERT INTO chicken_lot (birth_date, accommodation_date, initial_quantity, current_quantity, debicking, chicken_lineage_id, shed_id, egg_lot_id) 
+values ('2020-05-23', '2020-05-23', 10000, 10000, 'Convencional', 1, 1, 1);
+INSERT INTO chicken_lot (birth_date, accommodation_date, initial_quantity, current_quantity, debicking, chicken_lineage_id, shed_id, egg_lot_id) 
+values ('2020-05-18', '2020-05-18', 10000, 10000, 'Convencional', 1, 2, 1);
+INSERT INTO chicken_lot (birth_date, accommodation_date, initial_quantity, current_quantity, debicking, chicken_lineage_id, shed_id, egg_lot_id) 
+values ('2020-03-24', '2020-03-25', 3000, 3000, 'Convencional', 1, 3, 2);
+INSERT INTO chicken_lot (birth_date, accommodation_date, initial_quantity, current_quantity, debicking, chicken_lineage_id, shed_id, egg_lot_id) 
+values ('2020-03-26', '2020-03-27', 3000, 3000, 'Convencional', 1, 4, 3);
 
 CREATE TABLE egg_base (
 	id INT NOT NULL AUTO_INCREMENT,
@@ -21,31 +29,46 @@ CREATE TABLE egg_base (
     egg_lot_id INT NOT NULL,
 	PRIMARY KEY (id),
 	FOREIGN KEY (egg_lot_id) REFERENCES egg_lot(id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
 
-INSERT INTO egg_base (quantity, production_date, validity_date, egg_lot_id ) values (9566, '2020-05-23', '2020-06-20', 1);
-INSERT INTO egg_base (quantity, production_date, validity_date, egg_lot_id ) values (8020, '2020-05-23', '2020-06-20', 1);
-INSERT INTO egg_base (quantity, production_date, validity_date, egg_lot_id ) values (2730, '2020-05-23', '2020-06-20',  2);
-INSERT INTO egg_base (quantity, production_date, validity_date, egg_lot_id ) values (2650, '2020-05-23', '2020-06-20',  3);
-
-
-CREATE TABLE classification (
-	id INT NOT NULL AUTO_INCREMENT,
-	quantity INT NOT NULL,
-	PRIMARY KEY (id)	
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
+INSERT INTO egg_base (quantity, production_date, validity_date, egg_lot_id) 
+values (15200, '2020-05-18', '2020-06-15', 1);
+INSERT INTO egg_base (quantity, production_date, validity_date, egg_lot_id) 
+values (7800, '2020-05-18', '2020-06-15', 2);
 
 CREATE TABLE egg_type (
 	id INT NOT NULL AUTO_INCREMENT,
 	type VARCHAR(15) NOT NULL,
 	category VARCHAR(2) NOT NULL,
-    min_weight INT(2) NOT NULL,
-    max_weight INT(2) NOT NULL,
-    classification_id INT NOT NULL,
+    min_weight INT NOT NULL,
+    max_weight INT NOT NULL,
 	PRIMARY KEY (id)
-	FOREIGN KEY (classification_id) REFERENCES classification(id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+
+INSERT INTO egg_type (type, category, min_weight, max_weight) 
+values ('Jumbo', 'A', 66, 70);
+INSERT INTO egg_type (type, category, min_weight, max_weight) 
+values ('Extra', 'A', 60, 65);
+INSERT INTO egg_type (type, category, min_weight, max_weight) 
+values ('Grande', 'A', 55, 59);
+INSERT INTO egg_type (type, category, min_weight, max_weight) 
+values ('Médio', 'A', 50, 54);
+INSERT INTO egg_type (type, category, min_weight, max_weight) 
+values ('Pequeno', 'A', 45, 49);
+INSERT INTO egg_type (type, category, min_weight, max_weight) 
+values ('Industrial', 'B', 45, 70);
+INSERT INTO egg_type (type, category, min_weight, max_weight) 
+values ('Descarte', 'B', 45, 70);
+
+CREATE TABLE classification (
+	id INT NOT NULL AUTO_INCREMENT,
+	quantity INT NOT NULL,
+	egg_base_id INT NOT NULL,
+	egg_type_id INT NOT NULL,
+	PRIMARY KEY (id),	
+	FOREIGN KEY (egg_base_id) REFERENCES egg_base(id),
+	FOREIGN KEY (egg_type_id) REFERENCES egg_type(id)
+) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
 
 
 
@@ -57,7 +80,7 @@ CREATE TABLE packing (
     packing_by_box INT NOT NULL,
     quantity_by_box INT NOT NULL,
 	PRIMARY KEY (id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
 
 CREATE TABLE expedition (
 	id INT NOT NULL AUTO_INCREMENT,
@@ -65,7 +88,7 @@ CREATE TABLE expedition (
 	quantity INT NOT NULL,
 	ret INT NOT NULL,
 	PRIMARY KEY (id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
 
 CREATE TABLE product (
 	id INT NOT NULL AUTO_INCREMENT,
@@ -77,7 +100,7 @@ CREATE TABLE product (
 	FOREIGN KEY (classification_id) REFERENCES classification(id),
 	FOREIGN KEY (packing_id) REFERENCES packing(id),
 	FOREIGN KEY (expedition_id) REFERENCES expedition(id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
 
 CREATE TABLE line (
 	id INT NOT NULL AUTO_INCREMENT,
@@ -85,7 +108,7 @@ CREATE TABLE line (
     expedition_id INT NOT NULL,
 	PRIMARY KEY (id),
 	FOREIGN KEY (expedition_id) REFERENCES expedition(id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
 
 CREATE TABLE city (
 	id INT NOT NULL AUTO_INCREMENT,
@@ -94,7 +117,7 @@ CREATE TABLE city (
     line_id INT NOT NULL,
 	PRIMARY KEY (id),
 	FOREIGN KEY (line_id) REFERENCES line(id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
 
 
 

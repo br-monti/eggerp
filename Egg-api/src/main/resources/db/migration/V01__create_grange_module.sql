@@ -4,75 +4,75 @@ CREATE TABLE chicken_lineage (
     chicken_color VARCHAR(15) NOT NULL,
     provider VARCHAR(15) NOT NULL,
 	PRIMARY KEY (id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
 
 CREATE TABLE shed_manufacturer (
 	id INT NOT NULL AUTO_INCREMENT,
 	manufacturer VARCHAR(15) NOT NULL,
 	PRIMARY KEY (id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
 
 CREATE TABLE shed (
   id INT NOT NULL AUTO_INCREMENT,
   name VARCHAR(15) NOT NULL,
   type VARCHAR(15) NOT NULL,
-  capacity INT(6) NOT NULL,
+  capacity INT NOT NULL,
   model VARCHAR(15) NOT NULL,
   shed_manufacturer_id  INT NOT NULL,
   PRIMARY KEY (id),
   FOREIGN KEY (shed_manufacturer_id) REFERENCES shed_manufacturer(id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
 
 
 CREATE TABLE chicken_lot (
   id INT NOT NULL AUTO_INCREMENT,
   birth_date DATE NOT NULL,
   accommodation_date DATE NOT NULL,
-  initial_quantity INT(6) NOT NULL,
-  current_quantity INT(6) NOT NULL,
+  initial_quantity INT NOT NULL,
+  current_quantity INT NOT NULL,
   debicking VARCHAR(15) NOT NULL,
   chicken_lineage_id  INT NOT NULL,
   shed_id  INT NOT NULL,
   PRIMARY KEY (id),
   FOREIGN KEY (chicken_lineage_id) REFERENCES chicken_lineage(id),
   FOREIGN KEY (shed_id) REFERENCES shed(id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
 
 
 CREATE TABLE creation_monitoring (
   id INT NOT NULL AUTO_INCREMENT,
-  age_week INT(3) NOT NULL,
-  age_day INT(3) NOT NULL,
+  age_week INT NOT NULL,
+  age_day INT NOT NULL,
   date_week DATE NOT NULL,
-  body_weight INT(4) NOT NULL,
-  food INT(4) NOT NULL,
-  water INT(4) NOT NULL,
-  discard INT(4) NOT NULL,
-  mortality INT(4) NOT NULL,
+  body_weight INT NOT NULL,
+  food INT NOT NULL,
+  water INT NOT NULL,
+  discard INT NOT NULL,
+  mortality INT NOT NULL,
   chicken_lot_id  INT NOT NULL,
   PRIMARY KEY (id),
   FOREIGN KEY (chicken_lot_id) REFERENCES chicken_lot(id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
 
 
 CREATE TABLE production_monitoring (
   id INT NOT NULL AUTO_INCREMENT,
-  age_week INT(3) NOT NULL,
-  age_day INT(3) NOT NULL,
+  age_week INT NOT NULL,
+  age_day INT NOT NULL,
   date_week DATE NOT NULL,
-  body_weight INT(4) NOT NULL,
-  food INT(4) NOT NULL,
-  water INT(4) NOT NULL,
-  discard INT(4) NOT NULL,
-  mortality INT(4) NOT NULL,
-  total_production INT(5) NOT NULL,
-  first_eggs INT(5) NOT NULL,
-  second_eggs INT(5) NOT NULL,
-  egg_weight INT(4) NOT NULL,
+  body_weight INT NOT NULL,
+  food INT NOT NULL,
+  water INT NOT NULL,
+  discard INT NOT NULL,
+  mortality INT NOT NULL,
+  total_production INT NOT NULL,
+  first_eggs INT NOT NULL,
+  second_eggs INT NOT NULL,
+  egg_weight INT NOT NULL,
   chicken_lot_id  INT NOT NULL,
   PRIMARY KEY (id),
   FOREIGN KEY (chicken_lot_id) REFERENCES chicken_lot(id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
 
 INSERT INTO shed_manufacturer (manufacturer) values ('Artabas');
 INSERT INTO shed_manufacturer (manufacturer) values ('Kilbra');
@@ -89,14 +89,7 @@ INSERT INTO shed (name, type, capacity, model, shed_manufacturer_id ) values ('A
 INSERT INTO shed (name, type, capacity, model, shed_manufacturer_id ) values ('C1', 'Convencional', 3072, 'Madeira', 4);
 INSERT INTO shed (name, type, capacity, model, shed_manufacturer_id ) values ('C2', 'Convencional', 3072, 'Madeira', 4);
 
-INSERT INTO chicken_lot (birth_date, accommodation_date, initial_quantity, current_quantity, debicking, chicken_lineage_id, shed_id) 
-values ('2020-05-23', '2020-05-23', 10000, 10000, 'Convencional', 1, 1);
-INSERT INTO chicken_lot (birth_date, accommodation_date, initial_quantity, current_quantity, debicking, chicken_lineage_id, shed_id) 
-values ('2020-05-18', '2020-05-18', 10000, 10000, 'Convencional', 1, 2);
-INSERT INTO chicken_lot (birth_date, accommodation_date, initial_quantity, current_quantity, debicking, chicken_lineage_id, shed_id) 
-values ('2020-03-24', '2020-03-25', 3000, 3000, 'Convencional', 1, 3);
-INSERT INTO chicken_lot (birth_date, accommodation_date, initial_quantity, current_quantity, debicking, chicken_lineage_id, shed_id) 
-values ('2020-03-26', '2020-03-27', 3000, 3000, 'Convencional', 1, 4);
+
 
 
 
