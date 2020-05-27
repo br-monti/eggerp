@@ -15,6 +15,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 
+import com.egg.api.model.ChickenLot_;
 import com.egg.api.model.Classification;
 import com.egg.api.model.Classification_;
 import com.egg.api.repository.filter.ClassificationFilter;
@@ -70,6 +71,11 @@ public class ClassificationRepositoryImpl implements ClassificationRepositoryQue
 		if (classificationFilter.getId() != null) {
 			predicates.add(builder.and(
 					builder.equal((root.get(Classification_.id)), classificationFilter.getId())));
+		}
+		
+		if (classificationFilter.getEggBase() != null) {
+			predicates.add(builder.and(
+					builder.equal((root.get(Classification_.eggBase)), classificationFilter.getEggBase().getId())));
 		}
 		
 			
