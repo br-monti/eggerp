@@ -60,18 +60,6 @@ values ('Industrial', 'B', 45, 70);
 INSERT INTO egg_type (type, category, min_weight, max_weight) 
 values ('Descarte', 'B', 45, 70);
 
-CREATE TABLE classification (
-	id INT NOT NULL AUTO_INCREMENT,
-	quantity INT NOT NULL,
-	egg_base_id INT NOT NULL,
-	egg_type_id INT NOT NULL,
-	PRIMARY KEY (id),	
-	FOREIGN KEY (egg_base_id) REFERENCES egg_base(id),
-	FOREIGN KEY (egg_type_id) REFERENCES egg_type(id)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
-
-
-
 CREATE TABLE packing (
 	id INT NOT NULL AUTO_INCREMENT,
 	name VARCHAR(45) NOT NULL,
@@ -82,6 +70,36 @@ CREATE TABLE packing (
 	PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
 
+INSERT INTO packing (name, packing_type, quantity_by_packing, packing_by_box, quantity_by_box) 
+values ('Cartela 30 unidades', 'Cartela Granel', 30, 12, 360);
+INSERT INTO packing (name, packing_type, quantity_by_packing, packing_by_box, quantity_by_box) 
+values ('Filme 12 unidades', 'Filme', 12, 20, 240);
+INSERT INTO packing (name, packing_type, quantity_by_packing, packing_by_box, quantity_by_box) 
+values ('Estojo 12 unidades', 'Estojo Polpa', 12, 30, 360);
+
+CREATE TABLE product (
+	id INT NOT NULL AUTO_INCREMENT,
+	nick VARCHAR(45) NOT NULL,
+    packing_id INT NOT NULL,
+    egg_type_id INT NOT NULL,
+	PRIMARY KEY (id),
+	FOREIGN KEY (packing_id) REFERENCES packing(id),
+	FOREIGN KEY (egg_type_id) REFERENCES egg_type(id)
+) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+
+CREATE TABLE classification (
+	id INT NOT NULL AUTO_INCREMENT,
+	quantity INT,
+	egg_base_id INT NOT NULL,
+	product_id INT NOT NULL,
+	PRIMARY KEY (id),	
+	FOREIGN KEY (egg_base_id) REFERENCES egg_base(id),
+	FOREIGN KEY (product_id) REFERENCES product(id)
+) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+
+
+
+
 CREATE TABLE expedition (
 	id INT NOT NULL AUTO_INCREMENT,
 	date DATE NOT NULL,
@@ -90,17 +108,6 @@ CREATE TABLE expedition (
 	PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
 
-CREATE TABLE product (
-	id INT NOT NULL AUTO_INCREMENT,
-	quantity INT NOT NULL,
-    classification_id INT NOT NULL,
-    packing_id INT NOT NULL,
-    expedition_id INT NOT NULL,
-	PRIMARY KEY (id),
-	FOREIGN KEY (classification_id) REFERENCES classification(id),
-	FOREIGN KEY (packing_id) REFERENCES packing(id),
-	FOREIGN KEY (expedition_id) REFERENCES expedition(id)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
 
 CREATE TABLE line (
 	id INT NOT NULL AUTO_INCREMENT,

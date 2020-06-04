@@ -1,30 +1,28 @@
 package com.egg.api.model;
 
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
-@Entity
-@Table(name = "classification")
-public class Classification {
-	
+public class Product {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private int quantity;
+	@NotNull
+	private String nick;
 	
 	@ManyToOne
-	@JoinColumn(name = "product_id")
-	private Product product;
+	@JoinColumn(name = "packing_id")
+	private Packing packing;
 	
 	@ManyToOne
-	@JoinColumn(name = "egg_base_id")
-	private EggBase eggBase;
+	@JoinColumn(name = "egg_type_id")
+	private EggType eggType;
 
 	public Long getId() {
 		return id;
@@ -34,28 +32,28 @@ public class Classification {
 		this.id = id;
 	}
 
-	public int getQuantity() {
-		return quantity;
+	public String getNick() {
+		return nick;
 	}
 
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
+	public void setNick(String nick) {
+		this.nick = nick;
 	}
 
-	public Product getProduct() {
-		return product;
+	public Packing getPacking() {
+		return packing;
 	}
 
-	public void setProduct(Product product) {
-		this.product = product;
+	public void setPacking(Packing packing) {
+		this.packing = packing;
 	}
 
-	public EggBase getEggBase() {
-		return eggBase;
+	public EggType getEggType() {
+		return eggType;
 	}
 
-	public void setEggBase(EggBase eggBase) {
-		this.eggBase = eggBase;
+	public void setEggType(EggType eggType) {
+		this.eggType = eggType;
 	}
 
 	@Override
@@ -74,7 +72,7 @@ public class Classification {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Classification other = (Classification) obj;
+		Product other = (Product) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -82,5 +80,7 @@ public class Classification {
 			return false;
 		return true;
 	}
+	
+	
 	
 }
