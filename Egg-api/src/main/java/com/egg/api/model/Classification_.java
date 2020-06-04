@@ -8,13 +8,13 @@ import javax.persistence.metamodel.StaticMetamodel;
 @StaticMetamodel(Classification.class)
 public abstract class Classification_ {
 
+	public static volatile SingularAttribute<Classification, Product> product;
 	public static volatile SingularAttribute<Classification, Integer> quantity;
-	public static volatile SingularAttribute<Classification, EggType> eggType;
 	public static volatile SingularAttribute<Classification, EggBase> eggBase;
 	public static volatile SingularAttribute<Classification, Long> id;
 
+	public static final String PRODUCT = "product";
 	public static final String QUANTITY = "quantity";
-	public static final String EGG_TYPE = "eggType";
 	public static final String EGG_BASE = "eggBase";
 	public static final String ID = "id";
 
