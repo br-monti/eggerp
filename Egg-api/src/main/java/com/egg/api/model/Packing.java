@@ -1,5 +1,6 @@
 package com.egg.api.model;
 
+import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,15 +16,19 @@ public class Packing {
 	private String name;
 	
 	@NotNull
+	@Column(name = "packing_type")
 	private String packingType;
 	
 	@NotNull
+	@Column(name = "quantity_by_packing")
 	private int quantityByPacking;
 	
 	@NotNull
+	@Column(name = "packing_by_box")
 	private int packingByBox;
 	
 	@NotNull
+	@Column(name = "quantity_by_box")
 	private int quantityByBox;
 
 	public Long getId() {
