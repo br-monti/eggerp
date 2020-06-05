@@ -15,7 +15,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 
-import com.egg.api.model.ChickenLot_;
 import com.egg.api.model.Classification;
 import com.egg.api.model.Classification_;
 import com.egg.api.repository.filter.ClassificationFilter;
