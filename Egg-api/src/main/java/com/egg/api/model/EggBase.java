@@ -1,6 +1,7 @@
 package com.egg.api.model;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -34,6 +36,10 @@ public class EggBase {
 	@ManyToOne
 	@JoinColumn(name = "egg_lot_id")
 	private EggLot eggLot;
+	
+	@OneToMany
+	@JoinColumn(name = "egg_base_id")
+	private List<Classification> classifications;
 
 	public Long getId() {
 		return id;
@@ -74,6 +80,14 @@ public class EggBase {
 
 	public void setValidityDate(LocalDate validityDate) {
 		this.validityDate = validityDate;
+	}
+
+	public List<Classification> getClassifications() {
+		return classifications;
+	}
+
+	public void setClassifications(List<Classification> classifications) {
+		this.classifications = classifications;
 	}
 
 	@Override

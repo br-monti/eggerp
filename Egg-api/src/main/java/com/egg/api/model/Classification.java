@@ -22,9 +22,9 @@ public class Classification {
 	@JoinColumn(name = "product_id")
 	private Product product;
 	
-	@ManyToOne
-	@JoinColumn(name = "egg_base_id")
-	private EggBase eggBase;
+//	@ManyToOne
+//	@JoinColumn(name = "egg_base_id")
+//	private EggBase eggBase;
 
 	public Long getId() {
 		return id;
@@ -50,13 +50,13 @@ public class Classification {
 		this.product = product;
 	}
 
-	public EggBase getEggBase() {
-		return eggBase;
-	}
-
-	public void setEggBase(EggBase eggBase) {
-		this.eggBase = eggBase;
-	}
+//	public EggBase getEggBase() {
+//		return eggBase;
+//	}
+//
+//	public void setEggBase(EggBase eggBase) {
+//		this.eggBase = eggBase;
+//	}
 
 	@Override
 	public int hashCode() {
