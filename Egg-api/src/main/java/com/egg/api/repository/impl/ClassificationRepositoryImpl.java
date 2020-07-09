@@ -72,10 +72,10 @@ public class ClassificationRepositoryImpl implements ClassificationRepositoryQue
 					builder.equal((root.get(Classification_.id)), classificationFilter.getId())));
 		}
 		
-		if (classificationFilter.getEggBase() != null) {
-			predicates.add(builder.and(
-					builder.equal((root.get(Classification_.eggBase)), classificationFilter.getEggBase().getId())));
-		}
+//		if (classificationFilter.getEggBase() != null) {
+//			predicates.add(builder.and(
+//					builder.equal((root.get(Classification_.eggBase)), classificationFilter.getEggBase().getId())));
+//		}
 		
 			
 		return predicates.toArray(new Predicate[predicates.size()]);
