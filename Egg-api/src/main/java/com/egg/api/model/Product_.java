@@ -13,10 +13,5 @@ public abstract class Product_ {
 	public static volatile SingularAttribute<Product, Long> id;
 	public static volatile SingularAttribute<Product, Packing> packing;
 
-	public static final String NICK = "nick";
-	public static final String EGG_TYPE = "eggType";
-	public static final String ID = "id";
-	public static final String PACKING = "packing";
-
 }
 

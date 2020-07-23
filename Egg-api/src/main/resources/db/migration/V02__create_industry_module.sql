@@ -90,7 +90,7 @@ CREATE TABLE product (
 CREATE TABLE classification (
 	id INT NOT NULL AUTO_INCREMENT,
 	quantity INT,
-	egg_base_id INT NOT NULL,
+	egg_base_id INT,
 	product_id INT NOT NULL,
 	PRIMARY KEY (id),	
 	FOREIGN KEY (egg_base_id) REFERENCES egg_base(id),
@@ -99,32 +99,32 @@ CREATE TABLE classification (
 
 
 
-
-CREATE TABLE expedition (
-	id INT NOT NULL AUTO_INCREMENT,
-	date DATE NOT NULL,
-	quantity INT NOT NULL,
-	ret INT NOT NULL,
-	PRIMARY KEY (id)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
-
-
-CREATE TABLE line (
-	id INT NOT NULL AUTO_INCREMENT,
-	name VARCHAR(15) NOT NULL,
-    expedition_id INT NOT NULL,
-	PRIMARY KEY (id),
-	FOREIGN KEY (expedition_id) REFERENCES expedition(id)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
-
-CREATE TABLE city (
-	id INT NOT NULL AUTO_INCREMENT,
-	city VARCHAR(45) NOT NULL,
-    state VARCHAR(15) NOT NULL,
-    line_id INT NOT NULL,
-	PRIMARY KEY (id),
-	FOREIGN KEY (line_id) REFERENCES line(id)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
-
+-- 
+-- CREATE TABLE expedition (
+-- 	id INT NOT NULL AUTO_INCREMENT,
+-- 	date DATE NOT NULL,
+-- 	quantity INT NOT NULL,
+-- 	ret INT NOT NULL,
+-- 	PRIMARY KEY (id)
+-- ) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+-- 
+-- 
+-- CREATE TABLE line (
+-- 	id INT NOT NULL AUTO_INCREMENT,
+-- 	name VARCHAR(15) NOT NULL,
+--     expedition_id INT NOT NULL,
+-- 	PRIMARY KEY (id),
+-- 	FOREIGN KEY (expedition_id) REFERENCES expedition(id)
+-- ) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+-- 
+-- CREATE TABLE city (
+-- 	id INT NOT NULL AUTO_INCREMENT,
+-- 	city VARCHAR(45) NOT NULL,
+--     state VARCHAR(15) NOT NULL,
+--     line_id INT NOT NULL,
+-- 	PRIMARY KEY (id),
+-- 	FOREIGN KEY (line_id) REFERENCES line(id)
+-- ) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+-- 
 
 

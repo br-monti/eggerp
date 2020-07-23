@@ -11,8 +11,5 @@ public abstract class ShedManufacturer_ {
 	public static volatile SingularAttribute<ShedManufacturer, Long> id;
 	public static volatile SingularAttribute<ShedManufacturer, String> manufacturer;
 
-	public static final String ID = "id";
-	public static final String MANUFACTURER = "manufacturer";
-
 }
 

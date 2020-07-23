@@ -22,9 +22,9 @@ public class Classification {
 	@JoinColumn(name = "product_id")
 	private Product product;
 	
-//	@ManyToOne
-//	@JoinColumn(name = "egg_base_id")
-//	private EggBase eggBase;
+	@ManyToOne
+	@JoinColumn(name = "egg_base_id")
+	private EggBase eggBase;
 
 	public Long getId() {
 		return id;
