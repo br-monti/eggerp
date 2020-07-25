@@ -13,7 +13,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "egg_base")
@@ -38,7 +41,9 @@ public class EggBase {
 	@JoinColumn(name = "egg_lot_id")
 	private EggLot eggLot;
 	
-	@OneToMany(mappedBy = "eggBase")
+	@JsonIgnoreProperties("eggBase")
+	@Valid
+	@OneToMany(mappedBy = "eggBase", cascade = CascadeType.ALL, orphanRemoval = true)
 	//@JoinColumn(name = "egg_base_id")
 	private List<Classification> classifications;
 

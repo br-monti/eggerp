@@ -17,11 +17,11 @@ public class EggBaseService {
 	public EggBase update(Long id, EggBase eggBase) {
 		EggBase eggBaseSaved = findEggBaseById(id);
 		
-		//eggBaseSaved.getChickenLots().clear();
-		//eggBaseSaved.getChickenLots().addAll(eggBase.getChickenLots());		
-		//eggBaseSaved.getChickenLots().forEach(c -> c.setEggBase(eggBaseSaved));
+		eggBaseSaved.getClassifications().clear();
+		eggBaseSaved.getClassifications().addAll(eggBase.getClassifications());		
+		eggBaseSaved.getClassifications().forEach(c -> c.setEggBase(eggBaseSaved));
 		
-		BeanUtils.copyProperties(eggBase, eggBaseSaved, "id");
+		BeanUtils.copyProperties(eggBase, eggBaseSaved, "id", "classifications");
 		return eggBaseRepository.save(eggBaseSaved);
 	}
 
@@ -36,7 +36,7 @@ public class EggBaseService {
 
 
 	public EggBase save(EggBase eggBase) {
-		//eggBase.getChickenLots().forEach(c -> c.setEggBase(eggBase));
+		eggBase.getClassifications().forEach(c -> c.setEggBase(eggBase));
 		return eggBaseRepository.save(eggBase);
 	}
 

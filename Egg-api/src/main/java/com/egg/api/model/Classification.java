@@ -50,13 +50,13 @@ public class Classification {
 		this.product = product;
 	}
 
-//	public EggBase getEggBase() {
-//		return eggBase;
-//	}
-//
-//	public void setEggBase(EggBase eggBase) {
-//		this.eggBase = eggBase;
-//	}
+	public EggBase getEggBase() {
+		return eggBase;
+	}
+
+	public void setEggBase(EggBase eggBase) {
+		this.eggBase = eggBase;
+	}
 
 	@Override
 	public int hashCode() {
