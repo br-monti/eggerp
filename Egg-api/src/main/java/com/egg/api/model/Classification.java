@@ -8,6 +8,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "classification")
 public class Classification {
@@ -19,8 +21,8 @@ public class Classification {
 	private int quantity;
 	
 	@ManyToOne
-	@JoinColumn(name = "product_id")
-	private Product product;
+	@JoinColumn(name = "egg_type_id")
+	private EggType eggType;
 	
 	@ManyToOne
 	@JoinColumn(name = "egg_base_id")
@@ -42,12 +44,12 @@ public class Classification {
 		this.quantity = quantity;
 	}
 
-	public Product getProduct() {
-		return product;
+	public EggType getEggType() {
+		return eggType;
 	}
 
-	public void setProduct(Product product) {
-		this.product = product;
+	public void setEggType(EggType eggType) {
+		this.eggType = eggType;
 	}
 
 	public EggBase getEggBase() {

@@ -19,16 +19,16 @@ public class EggType {
 	@NotNull
 	private String type;
 	
-	@NotNull
+	//@NotNull
 	private String category;
 	
-	@NotNull
+	//@NotNull
 	@Column(name = "min_weight")
-	private int minWeight; 
+	private Integer minWeight; 
 	
-	@NotNull
+	//@NotNull
 	@Column(name = "max_weight")
-	private int maxWeight;
+	private Integer maxWeight;
 
 	public Long getId() {
 		return id;
@@ -54,19 +54,19 @@ public class EggType {
 		this.category = category;
 	}
 
-	public int getMinWeight() {
+	public Integer getMinWeight() {
 		return minWeight;
 	}
 
-	public void setMinWeight(int minWeight) {
+	public void setMinWeight(Integer minWeight) {
 		this.minWeight = minWeight;
 	}
 
-	public int getMaxWeight() {
+	public Integer getMaxWeight() {
 		return maxWeight;
 	}
 
-	public void setMaxWeight(int maxWeight) {
+	public void setMaxWeight(Integer maxWeight) {
 		this.maxWeight = maxWeight;
 	}
 
