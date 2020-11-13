@@ -6,6 +6,8 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -36,6 +38,10 @@ public class EggBase {
 	@NotNull
 	@Column(name = "validity_date")
 	private LocalDate validityDate;
+	
+	@NotNull
+    @Column(name = "industry_status")
+    private String industryStatus;
 	
 	@ManyToOne
 	@JoinColumn(name = "egg_lot_id")
@@ -90,6 +96,22 @@ public class EggBase {
 
 	public List<Classification> getClassifications() {
 		return classifications;
+	}
+
+/*	public IndustryStatus getIndustryStatus() {
+		return industryStatus;
+	}
+
+	public void setIndustryStatus(IndustryStatus industryStatus) {
+		this.industryStatus = industryStatus;
+	} */
+
+	public String getIndustryStatus() {
+		return industryStatus;
+	}
+
+	public void setIndustryStatus(String industryStatus) {
+		this.industryStatus = industryStatus;
 	}
 
 	public void setClassifications(List<Classification> classifications) {

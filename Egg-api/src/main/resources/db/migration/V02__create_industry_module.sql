@@ -26,6 +26,7 @@ CREATE TABLE egg_base (
 	quantity INT NOT NULL,
 	production_date DATE NOT NULL,
 	validity_date DATE NOT NULL,
+	industry_status VARCHAR(15),
     egg_lot_id INT NOT NULL,
 	PRIMARY KEY (id),
 	FOREIGN KEY (egg_lot_id) REFERENCES egg_lot(id)
