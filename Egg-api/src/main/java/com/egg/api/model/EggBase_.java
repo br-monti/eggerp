@@ -15,7 +15,7 @@ public abstract class EggBase_ {
 	public static volatile SingularAttribute<EggBase, LocalDate> productionDate;
 	public static volatile SingularAttribute<EggBase, LocalDate> validityDate;
 	public static volatile SingularAttribute<EggBase, EggLot> eggLot;
-	public static volatile SingularAttribute<EggBase, String> industryStatus;
+	public static volatile SingularAttribute<EggBase, IndustryStatus> industryStatus;
 	public static volatile SingularAttribute<EggBase, Long> id;
 
 }

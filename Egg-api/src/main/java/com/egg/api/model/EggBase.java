@@ -41,7 +41,8 @@ public class EggBase {
 	
 	@NotNull
     @Column(name = "industry_status")
-    private String industryStatus;
+	@Enumerated(EnumType.STRING)
+    private IndustryStatus industryStatus;
 	
 	@ManyToOne
 	@JoinColumn(name = "egg_lot_id")
@@ -97,22 +98,21 @@ public class EggBase {
 	public List<Classification> getClassifications() {
 		return classifications;
 	}
-
-/*	public IndustryStatus getIndustryStatus() {
+	public IndustryStatus getIndustryStatus() {
 		return industryStatus;
 	}
 
 	public void setIndustryStatus(IndustryStatus industryStatus) {
 		this.industryStatus = industryStatus;
-	} */
+	}
 
-	public String getIndustryStatus() {
+	/*	public String getIndustryStatus() {
 		return industryStatus;
 	}
 
 	public void setIndustryStatus(String industryStatus) {
 		this.industryStatus = industryStatus;
-	}
+	}*/
 
 	public void setClassifications(List<Classification> classifications) {
 		this.classifications = classifications;
