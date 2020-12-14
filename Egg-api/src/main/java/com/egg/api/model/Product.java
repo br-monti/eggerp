@@ -24,9 +24,9 @@ public class Product {
 	@JoinColumn(name = "packing_id")
 	private Packing packing;
 	
-	@ManyToOne
-	@JoinColumn(name = "egg_type_id")
-	private EggType eggType;
+//	@ManyToOne
+//	@JoinColumn(name = "egg_type_id")
+//	private EggType eggType;
 
 	public Long getId() {
 		return id;
@@ -52,13 +52,13 @@ public class Product {
 		this.packing = packing;
 	}
 
-	public EggType getEggType() {
-		return eggType;
-	}
-
-	public void setEggType(EggType eggType) {
-		this.eggType = eggType;
-	}
+//	public EggType getEggType() {
+//		return eggType;
+//	}
+//
+//	public void setEggType(EggType eggType) {
+//		this.eggType = eggType;
+//	}
 
 	@Override
 	public int hashCode() {

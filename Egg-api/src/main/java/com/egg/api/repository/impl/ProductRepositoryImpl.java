@@ -77,10 +77,10 @@ public class ProductRepositoryImpl implements ProductRepositoryQuery {
 					builder.equal((root.get(Product_.packing)), productFilter.getPacking().getId())));
 		}
 		
-		if (productFilter.getEggType() != null) {
-			predicates.add(builder.and(
-					builder.equal((root.get(Product_.eggType)), productFilter.getEggType().getId())));
-		}
+//		if (productFilter.getEggType() != null) {
+//			predicates.add(builder.and(
+//					builder.equal((root.get(Product_.eggType)), productFilter.getEggType().getId())));
+//		}
 		
 			
 		return predicates.toArray(new Predicate[predicates.size()]);

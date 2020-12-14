@@ -9,7 +9,6 @@ import javax.persistence.metamodel.StaticMetamodel;
 public abstract class Product_ {
 
 	public static volatile SingularAttribute<Product, String> nick;
-	public static volatile SingularAttribute<Product, EggType> eggType;
 	public static volatile SingularAttribute<Product, Long> id;
 	public static volatile SingularAttribute<Product, Packing> packing;
 
