@@ -39,5 +39,16 @@ public class EggBaseService {
 		eggBase.getClassifications().forEach(c -> c.setEggBase(eggBase));
 		return eggBaseRepository.save(eggBase);
 	}
+	
+	
+//	List <EggType> eggTypeList = eggTypeRepository.findAll();
+//	int index = 0;
+//	
+//	for (Classification classification : eggBase.getClassifications()) {
+//		classification.setEggBase(eggBase);			
+//		classification.setEggType(eggTypeList.get(index));
+//		index++;
+//	}
+//	index = 0;
 
 }
