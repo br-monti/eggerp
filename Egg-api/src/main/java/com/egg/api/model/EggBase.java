@@ -31,6 +31,14 @@ public class EggBase {
 	@NotNull
 	private int quantity;
 	
+	@Column(name = "category_A")
+	private int categoryA;
+	
+	@Column(name = "category_B")
+	private int categoryB;
+	
+	private int discard;
+	
 	@NotNull
 	@Column(name = "production_date")
 	private LocalDate productionDate; 
@@ -95,27 +103,44 @@ public class EggBase {
 		this.validityDate = validityDate;
 	}
 
+	public int getCategoryA() {
+		return categoryA;
+	}
+
+	public int getCategoryB() {
+		return categoryB;
+	}
+
+	public int getDiscard() {
+		return discard;
+	}
+
+	public void setCategoryA(int categoryA) {
+		this.categoryA = categoryA;
+	}
+
+	public void setCategoryB(int categoryB) {
+		this.categoryB = categoryB;
+	}
+
+	public void setDiscard(int discard) {
+		this.discard = discard;
+	}
+
 	public List<Classification> getClassifications() {
 		return classifications;
 	}
+
+	public void setClassifications(List<Classification> classifications) {
+		this.classifications = classifications;
+	}
+	
 	public IndustryStatus getIndustryStatus() {
 		return industryStatus;
 	}
 
 	public void setIndustryStatus(IndustryStatus industryStatus) {
 		this.industryStatus = industryStatus;
-	}
-
-	/*	public String getIndustryStatus() {
-		return industryStatus;
-	}
-
-	public void setIndustryStatus(String industryStatus) {
-		this.industryStatus = industryStatus;
-	}*/
-
-	public void setClassifications(List<Classification> classifications) {
-		this.classifications = classifications;
 	}
 
 	@Override

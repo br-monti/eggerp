@@ -10,10 +10,13 @@ import javax.persistence.metamodel.StaticMetamodel;
 @StaticMetamodel(EggBase.class)
 public abstract class EggBase_ {
 
+	public static volatile SingularAttribute<EggBase, Integer> categoryB;
+	public static volatile SingularAttribute<EggBase, Integer> discard;
 	public static volatile ListAttribute<EggBase, Classification> classifications;
 	public static volatile SingularAttribute<EggBase, Integer> quantity;
 	public static volatile SingularAttribute<EggBase, LocalDate> productionDate;
 	public static volatile SingularAttribute<EggBase, LocalDate> validityDate;
+	public static volatile SingularAttribute<EggBase, Integer> categoryA;
 	public static volatile SingularAttribute<EggBase, EggLot> eggLot;
 	public static volatile SingularAttribute<EggBase, IndustryStatus> industryStatus;
 	public static volatile SingularAttribute<EggBase, Long> id;

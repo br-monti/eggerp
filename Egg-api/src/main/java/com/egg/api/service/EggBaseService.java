@@ -22,17 +22,26 @@ public class EggBaseService {
 	
 	@Autowired
 	private EggTypeRepository eggTypeRepository;
-	
-	
-	
-
 
 	public EggBase update(Long id, EggBase eggBase) {
 		EggBase eggBaseSaved = findEggBaseById(id);
 		
 		eggBaseSaved.getClassifications().clear();
 		eggBaseSaved.getClassifications().addAll(eggBase.getClassifications());		
-		eggBaseSaved.getClassifications().forEach(c -> c.setEggBase(eggBaseSaved));
+		eggBaseSaved.getClassifications().forEach(c -> {
+			c.setEggBase(eggBaseSaved);
+			
+			if(c.getEggType().getType().equals("Descarte")) {
+				eggBaseSaved.setDiscard(c.getQuantity());
+			}
+			
+			if(c.getEggType().getType().equals("Industrial")) {
+				eggBaseSaved.setCategoryB(c.getQuantity());
+			}
+			
+			eggBaseSaved.setCategoryA(eggBaseSaved.getQuantity() - eggBaseSaved.getCategoryB() - eggBaseSaved.getDiscard());
+
+		});
 		
 		BeanUtils.copyProperties(eggBase, eggBaseSaved, "id", "classifications");
 		return eggBaseRepository.save(eggBaseSaved);
@@ -52,14 +61,21 @@ public class EggBaseService {
 		List <EggType> eggTypeList = eggTypeRepository.findAll();
 		
 		List <Classification> classificationList = new ArrayList<>();
-
-		Classification classification = null;
-		for (EggType eggType : eggTypeList) {
-			classification = new Classification();
+		//final Classification classification = null;
+		
+		eggTypeList.forEach(e -> {
+			Classification classification = new Classification();
 			classification.setEggBase(eggBase);	
-			classification.setEggType(eggType);
+			classification.setEggType(e);
 			classificationList.add(classification);
-		}		
+		});
+		
+//		for (EggType eggType : eggTypeList) {
+//			classification = new Classification();
+//			classification.setEggBase(eggBase);	
+//			classification.setEggType(eggType);
+//			classificationList.add(classification);
+//		}		
 		
 		eggBase.setClassifications(classificationList);		
 		
