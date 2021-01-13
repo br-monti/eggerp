@@ -1,7 +1,10 @@
 package com.egg.api.service;
 
+import java.beans.PropertyDescriptor;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +30,9 @@ public class EggBaseService {
 		EggBase eggBaseSaved = findEggBaseById(id);
 		
 		eggBaseSaved.getClassifications().clear();
-		eggBaseSaved.getClassifications().addAll(eggBase.getClassifications());		
+		eggBaseSaved.getClassifications().addAll(eggBase.getClassifications());	
+		
+		BeanUtils.copyProperties(eggBase, eggBaseSaved, "id", "classifications");
 		eggBaseSaved.getClassifications().forEach(c -> {
 			c.setEggBase(eggBaseSaved);
 			
@@ -38,13 +43,22 @@ public class EggBaseService {
 			if(c.getEggType().getType().equals("Industrial")) {
 				eggBaseSaved.setCategoryB(c.getQuantity());
 			}
-			
-			eggBaseSaved.setCategoryA(eggBaseSaved.getQuantity() - eggBaseSaved.getCategoryB() - eggBaseSaved.getDiscard());
-
+						
 		});
 		
-		BeanUtils.copyProperties(eggBase, eggBaseSaved, "id", "classifications");
+	    eggBaseSaved.setCategoryA(eggBaseSaved.getQuantity() - eggBaseSaved.getCategoryB() - eggBaseSaved.getDiscard());
+
 		return eggBaseRepository.save(eggBaseSaved);
+	}
+	
+	public void copyProperties(Object src, Object trg, Set<String> props) {
+	    String[] excludedProperties = 
+	            Arrays.stream(BeanUtils.getPropertyDescriptors(src.getClass()))
+	                  .map(PropertyDescriptor::getName)
+	                  .filter(name -> !props.contains(name))
+	                  .toArray(String[]::new);
+
+	    BeanUtils.copyProperties(src, trg, excludedProperties);
 	}
 
 	
@@ -61,7 +75,6 @@ public class EggBaseService {
 		List <EggType> eggTypeList = eggTypeRepository.findAll();
 		
 		List <Classification> classificationList = new ArrayList<>();
-		//final Classification classification = null;
 		
 		eggTypeList.forEach(e -> {
 			Classification classification = new Classification();
@@ -69,13 +82,6 @@ public class EggBaseService {
 			classification.setEggType(e);
 			classificationList.add(classification);
 		});
-		
-//		for (EggType eggType : eggTypeList) {
-//			classification = new Classification();
-//			classification.setEggBase(eggBase);	
-//			classification.setEggType(eggType);
-//			classificationList.add(classification);
-//		}		
 		
 		eggBase.setClassifications(classificationList);		
 		
