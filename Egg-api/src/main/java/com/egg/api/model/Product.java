@@ -18,47 +18,47 @@ public class Product {
 	private Long id;
 	
 	@NotNull
-	private String nick;
+	private int quantity;
 	
 	@ManyToOne
 	@JoinColumn(name = "packing_id")
 	private Packing packing;
 	
-//	@ManyToOne
-//	@JoinColumn(name = "egg_type_id")
-//	private EggType eggType;
+	@ManyToOne
+	@JoinColumn(name = "classification")
+	private Classification classification;
 
 	public Long getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getNick() {
-		return nick;
-	}
-
-	public void setNick(String nick) {
-		this.nick = nick;
+	public int getQuantity() {
+		return quantity;
 	}
 
 	public Packing getPacking() {
 		return packing;
 	}
 
+	public Classification getClassification() {
+		return classification;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
 	public void setPacking(Packing packing) {
 		this.packing = packing;
 	}
 
-//	public EggType getEggType() {
-//		return eggType;
-//	}
-//
-//	public void setEggType(EggType eggType) {
-//		this.eggType = eggType;
-//	}
+	public void setClassification(Classification classification) {
+		this.classification = classification;
+	}
 
 	@Override
 	public int hashCode() {
@@ -85,6 +85,6 @@ public class Product {
 		return true;
 	}
 	
-	
-	
 }
+
+	

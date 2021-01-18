@@ -74,32 +74,40 @@ CREATE TABLE classification (
 	FOREIGN KEY (egg_type_id) REFERENCES egg_type(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
 
--- CREATE TABLE packing (
--- 	id INT NOT NULL AUTO_INCREMENT,
--- 	name VARCHAR(45) NOT NULL,
--- 	packing_type VARCHAR(15) NOT NULL,
---     quantity_by_packing INT NOT NULL,
---     packing_by_box INT NOT NULL,
---     quantity_by_box INT NOT NULL,
--- 	PRIMARY KEY (id)
--- ) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+CREATE TABLE packing (
+	id INT NOT NULL AUTO_INCREMENT,
+	name VARCHAR(45) NOT NULL,
+	packing_type VARCHAR(15) NOT NULL,
+    quantity_by_packing INT NOT NULL,
+    packing_by_box INT NOT NULL,
+    quantity_by_box INT NOT NULL,
+	PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
 
--- INSERT INTO packing (name, packing_type, quantity_by_packing, packing_by_box, quantity_by_box) 
--- values ('Cartela 30 unidades', 'Cartela', 30, 12, 360);
--- INSERT INTO packing (name, packing_type, quantity_by_packing, packing_by_box, quantity_by_box) 
--- values ('Filme 12 unidades', 'Filme', 12, 20, 240);
--- INSERT INTO packing (name, packing_type, quantity_by_packing, packing_by_box, quantity_by_box) 
--- values ('Estojo 12 unidades', 'Estojo Polpa	', 12, 30, 360);
+INSERT INTO packing (name, packing_type, quantity_by_packing, packing_by_box, quantity_by_box) 
+values ('Cartela 20 unidades', 'Cartela', 20, 12, 240);
+INSERT INTO packing (name, packing_type, quantity_by_packing, packing_by_box, quantity_by_box) 
+values ('Cartela 30 unidades', 'Cartela', 30, 12, 360);
+INSERT INTO packing (name, packing_type, quantity_by_packing, packing_by_box, quantity_by_box) 
+values ('Filme 12 unidades', 'Filme', 12, 20, 240);
+INSERT INTO packing (name, packing_type, quantity_by_packing, packing_by_box, quantity_by_box) 
+values ('Filme 20 unidades', 'Filme', 20, 12, 240);
+INSERT INTO packing (name, packing_type, quantity_by_packing, packing_by_box, quantity_by_box) 
+values ('Filme 30 unidades', 'Filme', 30, 10, 300);
+INSERT INTO packing (name, packing_type, quantity_by_packing, packing_by_box, quantity_by_box) 
+values ('Estojo Polpa 6 unidades', 'Estojo Polpa', 6, 60, 360);
+INSERT INTO packing (name, packing_type, quantity_by_packing, packing_by_box, quantity_by_box) 
+values ('Estojo Polpa 12 unidades', 'Estojo Polpa	', 12, 30, 360);
 
--- CREATE TABLE product (
--- 	id INT NOT NULL AUTO_INCREMENT,
--- 	nick VARCHAR(45) NOT NULL,
---     packing_id INT NOT NULL,
---    egg_type_id INT NOT NULL,
--- 	PRIMARY KEY (id),
--- 	FOREIGN KEY (packing_id) REFERENCES packing(id),
--- 	FOREIGN KEY (egg_type_id) REFERENCES egg_type(id)
--- ) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+CREATE TABLE product (
+	id INT NOT NULL AUTO_INCREMENT,
+	quantity INT,
+	classification_id INT NOT NULL,
+    packing_id INT NOT NULL,   	
+	PRIMARY KEY (id),
+	FOREIGN KEY (classification_id) REFERENCES classification(id),
+	FOREIGN KEY (packing_id) REFERENCES packing(id)
+) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
 
 
 

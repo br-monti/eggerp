@@ -106,7 +106,6 @@ public class Packing {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
-	}
-	
+	}	
 
 }

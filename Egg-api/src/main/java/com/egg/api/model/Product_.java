@@ -8,9 +8,10 @@ import javax.persistence.metamodel.StaticMetamodel;
 @StaticMetamodel(Product.class)
 public abstract class Product_ {
 
-	public static volatile SingularAttribute<Product, String> nick;
+	public static volatile SingularAttribute<Product, Integer> quantity;
 	public static volatile SingularAttribute<Product, Long> id;
 	public static volatile SingularAttribute<Product, Packing> packing;
+	public static volatile SingularAttribute<Product, Classification> classification;
 
 }
 
