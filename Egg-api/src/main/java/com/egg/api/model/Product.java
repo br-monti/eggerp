@@ -25,7 +25,7 @@ public class Product {
 	private Packing packing;
 	
 	@ManyToOne
-	@JoinColumn(name = "classification")
+	@JoinColumn(name = "classification_id")
 	private Classification classification;
 
 	public Long getId() {
