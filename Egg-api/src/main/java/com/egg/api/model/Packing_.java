@@ -15,5 +15,12 @@ public abstract class Packing_ {
 	public static volatile SingularAttribute<Packing, String> packingType;
 	public static volatile SingularAttribute<Packing, Integer> quantityByPacking;
 
+	public static final String NAME = "name";
+	public static final String QUANTITY_BY_BOX = "quantityByBox";
+	public static final String ID = "id";
+	public static final String PACKING_BY_BOX = "packingByBox";
+	public static final String PACKING_TYPE = "packingType";
+	public static final String QUANTITY_BY_PACKING = "quantityByPacking";
+
 }
 

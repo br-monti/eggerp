@@ -18,5 +18,14 @@ public abstract class ChickenLot_ {
 	public static volatile SingularAttribute<ChickenLot, Integer> currentQuantity;
 	public static volatile SingularAttribute<ChickenLot, LocalDate> accommodationDate;
 
+	public static final String SHED = "shed";
+	public static final String CHICKEN_LINEAGE = "chickenLineage";
+	public static final String DEBICKING = "debicking";
+	public static final String INITIAL_QUANTITY = "initialQuantity";
+	public static final String ID = "id";
+	public static final String BIRTH_DATE = "birthDate";
+	public static final String CURRENT_QUANTITY = "currentQuantity";
+	public static final String ACCOMMODATION_DATE = "accommodationDate";
+
 }
 

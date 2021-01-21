@@ -21,5 +21,16 @@ public abstract class EggBase_ {
 	public static volatile SingularAttribute<EggBase, IndustryStatus> industryStatus;
 	public static volatile SingularAttribute<EggBase, Long> id;
 
+	public static final String CATEGORY_B = "categoryB";
+	public static final String DISCARD = "discard";
+	public static final String CLASSIFICATIONS = "classifications";
+	public static final String QUANTITY = "quantity";
+	public static final String PRODUCTION_DATE = "productionDate";
+	public static final String VALIDITY_DATE = "validityDate";
+	public static final String CATEGORY_A = "categoryA";
+	public static final String EGG_LOT = "eggLot";
+	public static final String INDUSTRY_STATUS = "industryStatus";
+	public static final String ID = "id";
+
 }
 
