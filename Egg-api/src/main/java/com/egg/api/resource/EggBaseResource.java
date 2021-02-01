@@ -23,6 +23,7 @@ import com.egg.api.event.ResourceCreatedEvent;
 import com.egg.api.model.EggBase;
 import com.egg.api.repository.EggBaseRepository;
 import com.egg.api.repository.filter.EggBaseFilter;
+import com.egg.api.repository.projection.EggBaseResume;
 import com.egg.api.service.EggBaseService;
 
 @RestController
@@ -40,8 +41,8 @@ public class EggBaseResource {
 	
 	@GetMapping
 	//@PreAuthorize("hasAuthority('ROLE_PESQUISAR_CATEGORIA') and #oauth2.hasScope('read')") TODO: Casdastrar role
-	public Page<EggBase> findByFilter(EggBaseFilter eggBaseFilter, Pageable pageable) {
-		return eggBaseRepository.findByFilter(eggBaseFilter, pageable);
+	public Page<EggBaseResume> findByFilter(EggBaseFilter eggBaseFilter, Pageable pageable) {
+		return eggBaseRepository.resume(eggBaseFilter, pageable);
 	}
 	
 	@PostMapping

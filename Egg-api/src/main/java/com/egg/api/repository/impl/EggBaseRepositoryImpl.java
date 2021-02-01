@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Order;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
@@ -17,7 +18,9 @@ import org.springframework.data.domain.Pageable;
 
 import com.egg.api.model.EggBase;
 import com.egg.api.model.EggBase_;
+import com.egg.api.model.EggLot_;
 import com.egg.api.repository.filter.EggBaseFilter;
+import com.egg.api.repository.projection.EggBaseResume;
 import com.egg.api.repository.query.EggBaseRepositoryQuery;
 
 public class EggBaseRepositoryImpl implements EggBaseRepositoryQuery {
@@ -39,20 +42,51 @@ public class EggBaseRepositoryImpl implements EggBaseRepositoryQuery {
 		
 		return new PageImpl<>(query.getResultList(), pageable, total(eggBaseFilter));
 	}
+	
+	@Override
+	public Page<EggBaseResume> resume(EggBaseFilter eggBaseFilter, Pageable pageable) {
+		CriteriaBuilder builder = manager.getCriteriaBuilder();
+		CriteriaQuery<EggBaseResume> criteria = builder.createQuery(EggBaseResume.class);
+		Root<EggBase> root = criteria.from(EggBase.class);
+		
+		criteria.select(builder.construct(EggBaseResume.class
+				, root.get(EggBase_.id), root.get(EggBase_.quantity)
+				, root.get(EggBase_.categoryA), root.get(EggBase_.categoryB)
+				, root.get(EggBase_.discard), root.get(EggBase_.productionDate)
+				, root.get(EggBase_.validityDate), root.get(EggBase_.industryStatus)
+				, root.get(EggBase_.eggLot).get(EggLot_.id)
+				, root.get(EggBase_.eggLot).get(EggLot_.name)
+				, root.get(EggBase_.eggLot).get(EggLot_.boxColor)));
+		
+		Predicate[] predicates = createRestrictions(eggBaseFilter, builder, root);
+		criteria.where(predicates);
+		
+		List<Order> orderList = new ArrayList<Order>();
+		orderList.add(builder.desc(root.get(EggBase_.id)));
+		orderList.add(builder.desc(root.get(EggBase_.eggLot).get(EggLot_.id)));
+
+		criteria.orderBy(orderList);
+		//criteria.orderBy(builder.desc(root.get(EggBase_.id), root.get(EggBase_.eggLot).get(EggLot_.name)));
+		TypedQuery<EggBaseResume> query = manager.createQuery(criteria);
+		addPaginationRestrictions(query, pageable);
+		
+		return new PageImpl<>(query.getResultList(), pageable, total(eggBaseFilter));
+	}
+
 
 	private Long total(EggBaseFilter eggBaseFilter) {
 		CriteriaBuilder builder = manager.getCriteriaBuilder();
 		CriteriaQuery<Long> criteria = builder.createQuery(Long.class);
 		Root<EggBase> root = criteria.from(EggBase.class);
 		
-		Predicate[] predicates = createRestrictions(eggBaseFilter, builder, root);
+		Predicate[] predicates = createRestrictions(eggBaseFilter, builder, root);		
 		criteria.where(predicates);
 		
 		criteria.select(builder.count(root));
 		return manager.createQuery(criteria).getSingleResult();
 	}
 
-	private void addPaginationRestrictions(TypedQuery<EggBase> query, Pageable pageable) {
+	private void addPaginationRestrictions(TypedQuery<?> query, Pageable pageable) {
 		int currentPage = pageable.getPageNumber();
 		int totalRegisterByPage = pageable.getPageSize();
 		int firstPageRegister = currentPage * totalRegisterByPage;
@@ -99,5 +133,6 @@ public class EggBaseRepositoryImpl implements EggBaseRepositoryQuery {
 		
 		return predicates.toArray(new Predicate[predicates.size()]);
 	}
+
 
 }
