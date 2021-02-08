@@ -23,6 +23,7 @@ import com.egg.api.event.ResourceCreatedEvent;
 import com.egg.api.model.Classification;
 import com.egg.api.repository.ClassificationRepository;
 import com.egg.api.repository.filter.ClassificationFilter;
+import com.egg.api.repository.projection.ClassificationResume;
 import com.egg.api.service.ClassificationService;
 
 @RestController
@@ -40,8 +41,8 @@ public class ClassificationResource {
 	
 	@GetMapping
 	//@PreAuthorize("hasAuthority('ROLE_PESQUISAR_CATEGORIA') and #oauth2.hasScope('read')") TODO: Casdastrar role
-	public Page<Classification> findByFilter(ClassificationFilter classificationFilter, Pageable pageable) {
-		return classificationRepository.findByFilter(classificationFilter, pageable);
+	public Page<ClassificationResume> findByFilter(ClassificationFilter classificationFilter, Pageable pageable) {
+		return classificationRepository.resume(classificationFilter, pageable);
 	}
 	
 	@PostMapping

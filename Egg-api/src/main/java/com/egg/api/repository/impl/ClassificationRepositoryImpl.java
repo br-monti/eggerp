@@ -17,7 +17,10 @@ import org.springframework.data.domain.Pageable;
 
 import com.egg.api.model.Classification;
 import com.egg.api.model.Classification_;
+import com.egg.api.model.EggBase_;
+import com.egg.api.model.EggType_;
 import com.egg.api.repository.filter.ClassificationFilter;
+import com.egg.api.repository.projection.ClassificationResume;
 import com.egg.api.repository.query.ClassificationRepositoryQuery;
 
 public class ClassificationRepositoryImpl implements ClassificationRepositoryQuery {
@@ -39,6 +42,32 @@ public class ClassificationRepositoryImpl implements ClassificationRepositoryQue
 		
 		return new PageImpl<>(query.getResultList(), pageable, total(classificationFilter));
 	}
+	
+	@Override
+	public Page<ClassificationResume> resume(ClassificationFilter classificationFilter, Pageable pageable) {
+		CriteriaBuilder builder = manager.getCriteriaBuilder();
+		CriteriaQuery<ClassificationResume> criteria = builder.createQuery(ClassificationResume.class);
+		Root<Classification> root = criteria.from(Classification.class);
+		
+		criteria.select(builder.construct(ClassificationResume.class
+				, root.get(Classification_.id), root.get(Classification_.quantity)
+				, root.get(Classification_.eggBase).get(EggBase_.id)
+				, root.get(Classification_.eggType).get(EggType_.id)));
+		
+		Predicate[] predicates = createRestrictions(classificationFilter, builder, root);
+		criteria.where(predicates);
+		
+//		List<Order> orderList = new ArrayList<Order>();
+//		orderList.add(builder.desc(root.get(EggBase_.id)));
+//		orderList.add(builder.desc(root.get(EggBase_.eggLot).get(EggLot_.id)));
+//
+//		criteria.orderBy(orderList);
+		//criteria.orderBy(builder.desc(root.get(EggBase_.id), root.get(EggBase_.eggLot).get(EggLot_.name)));
+		TypedQuery<ClassificationResume> query = manager.createQuery(criteria);
+		addPaginationRestrictions(query, pageable);
+		
+		return new PageImpl<>(query.getResultList(), pageable, total(classificationFilter));
+	}
 
 	private Long total(ClassificationFilter classificationFilter) {
 		CriteriaBuilder builder = manager.getCriteriaBuilder();
@@ -52,7 +81,7 @@ public class ClassificationRepositoryImpl implements ClassificationRepositoryQue
 		return manager.createQuery(criteria).getSingleResult();
 	}
 
-	private void addPaginationRestrictions(TypedQuery<Classification> query, Pageable pageable) {
+	private void addPaginationRestrictions(TypedQuery<?> query, Pageable pageable) {
 		int currentPage = pageable.getPageNumber();
 		int totalRegisterByPage = pageable.getPageSize();
 		int firstPageRegister = currentPage * totalRegisterByPage;

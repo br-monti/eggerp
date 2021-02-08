@@ -1,12 +1,19 @@
 package com.egg.api.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.Valid;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "classification")
@@ -25,6 +32,11 @@ public class Classification {
 	@ManyToOne
 	@JoinColumn(name = "egg_base_id")
 	private EggBase eggBase;
+	
+	@JsonIgnoreProperties("classification")
+	@Valid
+	@OneToMany(mappedBy = "classification", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Product> products;
 
 	public Long getId() {
 		return id;
@@ -56,6 +68,14 @@ public class Classification {
 
 	public void setEggBase(EggBase eggBase) {
 		this.eggBase = eggBase;
+	}
+
+	public List<Product> getProducts() {
+		return products;
+	}
+
+	public void setProducts(List<Product> products) {
+		this.products = products;
 	}
 
 	@Override
