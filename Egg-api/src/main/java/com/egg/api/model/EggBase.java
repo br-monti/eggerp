@@ -52,6 +52,7 @@ public class EggBase {
 	@Enumerated(EnumType.STRING)
     private IndustryStatus industryStatus;
 	
+	@JsonIgnoreProperties("chickenLots")
 	@ManyToOne
 	@JoinColumn(name = "egg_lot_id")
 	private EggLot eggLot;
