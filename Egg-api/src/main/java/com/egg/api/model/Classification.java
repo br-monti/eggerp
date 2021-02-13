@@ -29,6 +29,7 @@ public class Classification {
 	@JoinColumn(name = "egg_type_id")
 	private EggType eggType;
 	
+	@JsonIgnoreProperties("classifications")
 	@ManyToOne
 	@JoinColumn(name = "egg_base_id")
 	private EggBase eggBase;
