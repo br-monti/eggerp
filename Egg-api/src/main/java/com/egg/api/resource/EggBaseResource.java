@@ -41,7 +41,13 @@ public class EggBaseResource {
 	
 	@GetMapping
 	//@PreAuthorize("hasAuthority('ROLE_PESQUISAR_CATEGORIA') and #oauth2.hasScope('read')") TODO: Casdastrar role
-	public Page<EggBaseResume> findByFilter(EggBaseFilter eggBaseFilter, Pageable pageable) {
+	public Page<EggBase> findByFilter(EggBaseFilter eggBaseFilter, Pageable pageable) {
+		return eggBaseRepository.findByFilter(eggBaseFilter, pageable);
+	}
+	
+	@GetMapping(params = "resume")
+	//@PreAuthorize("hasAuthority('ROLE_PESQUISAR_CATEGORIA') and #oauth2.hasScope('read')") TODO: Casdastrar role
+	public Page<EggBaseResume> resume(EggBaseFilter eggBaseFilter, Pageable pageable) {
 		return eggBaseRepository.resume(eggBaseFilter, pageable);
 	}
 	

@@ -41,7 +41,12 @@ public class ClassificationResource {
 	
 	@GetMapping
 	//@PreAuthorize("hasAuthority('ROLE_PESQUISAR_CATEGORIA') and #oauth2.hasScope('read')") TODO: Casdastrar role
-	public Page<ClassificationResume> findByFilter(ClassificationFilter classificationFilter, Pageable pageable) {
+	public Page<Classification> findByFilter(ClassificationFilter classificationFilter, Pageable pageable) {
+		return classificationRepository.findByFilter(classificationFilter, pageable);
+	}
+	
+	@GetMapping(params = "resume")
+	public Page<ClassificationResume> resume(ClassificationFilter classificationFilter, Pageable pageable) {
 		return classificationRepository.resume(classificationFilter, pageable);
 	}
 	
