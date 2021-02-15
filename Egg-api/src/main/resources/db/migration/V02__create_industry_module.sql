@@ -59,10 +59,6 @@ INSERT INTO egg_type (type, category, min_weight, max_weight)
 values ('Médio', 'A', 50, 54);
 INSERT INTO egg_type (type, category, min_weight, max_weight) 
 values ('Pequeno', 'A', 45, 49);
-INSERT INTO egg_type (type, category) 
-values ('Industrial', 'B');
-INSERT INTO egg_type (type) 
-values ('Descarte');
 
 CREATE TABLE classification (
 	id INT NOT NULL AUTO_INCREMENT,
