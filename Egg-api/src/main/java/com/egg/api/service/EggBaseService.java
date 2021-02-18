@@ -35,15 +35,15 @@ public class EggBaseService {
 		BeanUtils.copyProperties(eggBase, eggBaseSaved, "id", "classifications");
 		eggBaseSaved.getClassifications().forEach(c -> {
 			c.setEggBase(eggBaseSaved);
-			
-			if(c.getEggType().getType().equals("Descarte")) {
-				eggBaseSaved.setDiscard(c.getQuantity());
-			}
-			
-			if(c.getEggType().getType().equals("Industrial")) {
-				eggBaseSaved.setCategoryB(c.getQuantity());
-			}
-						
+//			
+//			if(c.getEggType().getType().equals("Descarte")) {
+//				eggBaseSaved.setDiscard(c.getQuantity());
+//			}
+//			
+//			if(c.getEggType().getType().equals("Industrial")) {
+//				eggBaseSaved.setCategoryB(c.getQuantity());
+//			}
+//						
 		});
 		
 	    eggBaseSaved.setCategoryA(eggBaseSaved.getQuantity() - eggBaseSaved.getCategoryB() - eggBaseSaved.getDiscard());
