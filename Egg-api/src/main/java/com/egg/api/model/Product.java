@@ -9,6 +9,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "product")
 public class Product {
@@ -24,6 +26,7 @@ public class Product {
 	@JoinColumn(name = "packing_id")
 	private Packing packing;
 	
+	@JsonIgnoreProperties("products")
 	@ManyToOne
 	@JoinColumn(name = "classification_id")
 	private Classification classification;
