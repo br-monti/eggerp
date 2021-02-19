@@ -35,8 +35,8 @@ CREATE TABLE egg_base (
 	FOREIGN KEY (egg_lot_id) REFERENCES egg_lot(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
 
-INSERT INTO egg_base (quantity, production_date, validity_date, category_A, category_B, discard, industry_status, egg_lot_id) 
-values (15200, '2021-02-17', '2021-03-17', 15000, 150, 50, 'EggBase', 1);
+-- INSERT INTO egg_base (quantity, production_date, validity_date, category_A, category_B, discard, industry_status, egg_lot_id) 
+-- values (15200, '2021-02-17', '2021-03-17', 15000, 150, 50, 'EggBase', 1);
 -- INSERT INTO egg_base (quantity, production_date, validity_date, category_A, category_B, discard, industry_status, egg_lot_id) 
 -- values (10000, '2021-02-17', '2021-03-17', 9800, 100, 100, 'EggBase', 2);
 -- INSERT INTO egg_base (quantity, production_date, validity_date, category_A, category_B, discard, industry_status, egg_lot_id) 
@@ -72,11 +72,11 @@ CREATE TABLE classification (
 	FOREIGN KEY (egg_type_id) REFERENCES egg_type(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
 
-INSERT INTO classification (quantity, egg_base_id, egg_type_id) values (200, 1, 1);
-INSERT INTO classification (quantity, egg_base_id, egg_type_id) values (2000, 1, 2);
-INSERT INTO classification (quantity, egg_base_id, egg_type_id) values (6000, 1, 3);
-INSERT INTO classification (quantity, egg_base_id, egg_type_id) values (6000, 1, 4);
-INSERT INTO classification (quantity, egg_base_id, egg_type_id) values (800, 1, 5);
+-- INSERT INTO classification (quantity, egg_base_id, egg_type_id) values (200, 1, 1);
+-- INSERT INTO classification (quantity, egg_base_id, egg_type_id) values (2000, 1, 2);
+-- INSERT INTO classification (quantity, egg_base_id, egg_type_id) values (6000, 1, 3);
+-- INSERT INTO classification (quantity, egg_base_id, egg_type_id) values (6000, 1, 4);
+-- INSERT INTO classification (quantity, egg_base_id, egg_type_id) values (800, 1, 5);
 
 CREATE TABLE packing (
 	id INT NOT NULL AUTO_INCREMENT,
@@ -113,19 +113,19 @@ CREATE TABLE product (
 	FOREIGN KEY (packing_id) REFERENCES packing(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
 
-INSERT INTO product (quantity, classification_id, packing_id) values (100, 1, 1);
-
-INSERT INTO product (quantity, classification_id, packing_id) values (200, 2, 2);
-
-INSERT INTO product (quantity, classification_id, packing_id) values (300, 3, 3);
-INSERT INTO product (quantity, classification_id, packing_id) values (400, 3, 4);
-INSERT INTO product (quantity, classification_id, packing_id) values (500, 3, 5);
-INSERT INTO product (quantity, classification_id, packing_id) values (600, 3, 6);
-INSERT INTO product (quantity, classification_id, packing_id) values (700, 3, 7);
-
-INSERT INTO product (quantity, classification_id, packing_id) values (50, 4, 2);
-
-INSERT INTO product (quantity, classification_id, packing_id) values (200, 5, 2);
+-- INSERT INTO product (quantity, classification_id, packing_id) values (100, 1, 1);
+-- 
+-- INSERT INTO product (quantity, classification_id, packing_id) values (200, 2, 2);
+-- 
+-- INSERT INTO product (quantity, classification_id, packing_id) values (300, 3, 3);
+-- INSERT INTO product (quantity, classification_id, packing_id) values (400, 3, 4);
+-- INSERT INTO product (quantity, classification_id, packing_id) values (500, 3, 5);
+-- INSERT INTO product (quantity, classification_id, packing_id) values (600, 3, 6);
+-- INSERT INTO product (quantity, classification_id, packing_id) values (700, 3, 7);
+-- 
+-- INSERT INTO product (quantity, classification_id, packing_id) values (50, 4, 2);
+-- 
+-- INSERT INTO product (quantity, classification_id, packing_id) values (200, 5, 2);
 
 
 
