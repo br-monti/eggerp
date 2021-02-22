@@ -50,6 +50,12 @@ public class ClassificationResource {
 		return classificationRepository.resume(classificationFilter, pageable);
 	}
 	
+//	@GetMapping(params = "create")
+//	//@PreAuthorize("hasAuthority('ROLE_PESQUISAR_CATEGORIA') and #oauth2.hasScope('read')") TODO: Casdastrar role
+//	public ResponseEntity<Classification> createClassifications() {
+//		return  classificationService.createClassifications();
+//	}
+	
 	@PostMapping
 	//@PreAuthorize("hasAuthority('ROLE_CADASTRAR_CATEGORIA') and #oauth2.hasScope('write')") TODO: Casdastrar role
 	public ResponseEntity<Classification> create(@Valid @RequestBody Classification classification, HttpServletResponse response) {
