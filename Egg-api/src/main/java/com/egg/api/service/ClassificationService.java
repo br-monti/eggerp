@@ -1,18 +1,14 @@
 package com.egg.api.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.egg.api.model.Classification;
+import com.egg.api.model.EggBase;
 import com.egg.api.model.EggType;
 import com.egg.api.repository.ClassificationRepository;
 import com.egg.api.repository.EggTypeRepository;
@@ -56,21 +52,18 @@ public class ClassificationService {
 		
 	}
 	
-	public ResponseEntity<Classification> createClassifications() {
+	public void createClassifications(EggBase eggBase) {			
 		
 		List <EggType> eggTypeList = eggTypeRepository.findAll();
 		
-		List <Classification> classificationList = new ArrayList<>();
-		
-		eggTypeList.forEach(e -> {
+		eggTypeList.forEach(e -> {			
+			
 			Classification classification = new Classification();
-			classification.setEggBase(null);	
-			classification.setEggType(e);
-			classificationList.add(classification);
+			classification.setEggBase(eggBase);	
+			classification.setEggType(e);			
+			classificationRepository.save(classification);
 		});
-		
-		 return new ResponseEntity(classificationList, HttpStatus.OK) ;	
-		
+				
 	}
 
 }
