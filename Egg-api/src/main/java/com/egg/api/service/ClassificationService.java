@@ -11,6 +11,7 @@ import com.egg.api.model.Classification;
 import com.egg.api.model.EggBase;
 import com.egg.api.model.EggType;
 import com.egg.api.repository.ClassificationRepository;
+import com.egg.api.repository.EggBaseRepository;
 import com.egg.api.repository.EggTypeRepository;
 
 @Service
@@ -21,6 +22,9 @@ public class ClassificationService {
 	
 	@Autowired
 	private EggTypeRepository eggTypeRepository;
+	
+	@Autowired
+	private EggBaseService eggBaseService;
 
 	public Classification update(Long id, Classification classification) {
 		Classification classificationSaved = findClassificationById(id);
@@ -41,8 +45,7 @@ public class ClassificationService {
 		}
 		return classificationSaved;
 	}
-
-
+	
 	public Classification save(Classification classification) {
 		//classification.getChickenLots().forEach(c -> c.setClassification(classification));
 		return classificationRepository.save(classification);
@@ -52,8 +55,9 @@ public class ClassificationService {
 		
 	}
 	
-	public void createClassifications(EggBase eggBase) {			
+	public void createClassifications(Long id) {			
 		
+		EggBase eggBase = eggBaseService.findEggBaseById(id);
 		List <EggType> eggTypeList = eggTypeRepository.findAll();
 		
 		eggTypeList.forEach(e -> {			

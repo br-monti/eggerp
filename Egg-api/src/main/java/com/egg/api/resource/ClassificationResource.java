@@ -50,10 +50,15 @@ public class ClassificationResource {
 		return classificationRepository.resume(classificationFilter, pageable);
 	}
 	
-//	@GetMapping(params = "create")
-//	//@PreAuthorize("hasAuthority('ROLE_PESQUISAR_CATEGORIA') and #oauth2.hasScope('read')") TODO: Casdastrar role
-//	public ResponseEntity<Classification> createClassifications() {
-//		return  classificationService.createClassifications();
+	@PutMapping("/{id}/create")
+	//@PreAuthorize("hasAuthority('ROLE_PESQUISAR_CATEGORIA') and #oauth2.hasScope('read')") TODO: Casdastrar role
+	public void createClassifications(@PathVariable Long id) {
+		classificationService.createClassifications(id);
+	}
+	
+//	@PutMapping("/{codigo}/ativo")
+//	public void atualizarPropriedadeAtivo(@PathVariable Long codigo, @RequestBody Boolean ativo) {
+//		classificationService.atualizarPropriedadeAtivo(codigo, ativo);
 //	}
 	
 	@PostMapping
