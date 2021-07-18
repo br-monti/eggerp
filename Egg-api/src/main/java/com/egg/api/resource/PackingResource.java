@@ -20,10 +20,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.egg.api.event.ResourceCreatedEvent;
-import com.egg.api.model.Packing;
-import com.egg.api.repository.PackingRepository;
-import com.egg.api.repository.filter.PackingFilter;
-import com.egg.api.service.PackingService;
+import com.egg.domain.model.Packing;
+import com.egg.domain.repository.PackingRepository;
+import com.egg.domain.repository.filter.PackingFilter;
+import com.egg.domain.service.PackingService;
 
 @RestController
 @RequestMapping("/Packings")

@@ -20,10 +20,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.egg.api.event.ResourceCreatedEvent;
-import com.egg.api.model.ProductionMonitoring;
-import com.egg.api.repository.ProductionMonitoringRepository;
-import com.egg.api.repository.filter.ProductionMonitoringFilter;
-import com.egg.api.service.ProductionMonitoringService;
+import com.egg.domain.model.ProductionMonitoring;
+import com.egg.domain.repository.ProductionMonitoringRepository;
+import com.egg.domain.repository.filter.ProductionMonitoringFilter;
+import com.egg.domain.service.ProductionMonitoringService;
 
 @RestController
 @RequestMapping("/ProductionMonitorings")

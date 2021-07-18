@@ -20,10 +20,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.egg.api.event.ResourceCreatedEvent;
-import com.egg.api.model.EggType;
-import com.egg.api.repository.EggTypeRepository;
-import com.egg.api.repository.filter.EggTypeFilter;
-import com.egg.api.service.EggTypeService;
+import com.egg.domain.model.EggType;
+import com.egg.domain.repository.EggTypeRepository;
+import com.egg.domain.repository.filter.EggTypeFilter;
+import com.egg.domain.service.EggTypeService;
 
 @RestController
 @RequestMapping("/EggTypes")

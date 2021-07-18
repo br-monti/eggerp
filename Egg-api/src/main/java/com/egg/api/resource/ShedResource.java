@@ -20,10 +20,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.egg.api.event.ResourceCreatedEvent;
-import com.egg.api.model.Shed;
-import com.egg.api.repository.ShedRepository;
-import com.egg.api.repository.filter.ShedFilter;
-import com.egg.api.service.ShedService;
+import com.egg.domain.model.Shed;
+import com.egg.domain.repository.ShedRepository;
+import com.egg.domain.repository.filter.ShedFilter;
+import com.egg.domain.service.ShedService;
 
 @RestController
 @RequestMapping("/Sheds")

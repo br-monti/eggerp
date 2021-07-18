@@ -20,10 +20,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.egg.api.event.ResourceCreatedEvent;
-import com.egg.api.model.Product;
-import com.egg.api.repository.ProductRepository;
-import com.egg.api.repository.filter.ProductFilter;
-import com.egg.api.service.ProductService;
+import com.egg.domain.model.Product;
+import com.egg.domain.repository.ProductRepository;
+import com.egg.domain.repository.filter.ProductFilter;
+import com.egg.domain.service.ProductService;
 
 @RestController
 @RequestMapping("/Products")

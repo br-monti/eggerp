@@ -20,10 +20,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.egg.api.event.ResourceCreatedEvent;
-import com.egg.api.model.ChickenLineage;
-import com.egg.api.repository.ChickenLineageRepository;
-import com.egg.api.repository.filter.ChickenLineageFilter;
-import com.egg.api.service.ChickenLineageService;
+import com.egg.domain.model.ChickenLineage;
+import com.egg.domain.repository.ChickenLineageRepository;
+import com.egg.domain.repository.filter.ChickenLineageFilter;
+import com.egg.domain.service.ChickenLineageService;
 
 @RestController
 @RequestMapping("/ChickenLineages")

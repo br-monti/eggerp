@@ -20,9 +20,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.egg.api.event.ResourceCreatedEvent;
-import com.egg.api.model.ShedManufacturer;
-import com.egg.api.repository.ShedManufacturerRepository;
-import com.egg.api.service.ShedManufacturerService;
+import com.egg.domain.model.ShedManufacturer;
+import com.egg.domain.repository.ShedManufacturerRepository;
+import com.egg.domain.service.ShedManufacturerService;
 
 @RestController
 @RequestMapping("/ShedManufacturers")
