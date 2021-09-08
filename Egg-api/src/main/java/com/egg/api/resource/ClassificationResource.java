@@ -20,11 +20,11 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.egg.api.event.ResourceCreatedEvent;
-import com.egg.api.model.Classification;
-import com.egg.api.repository.ClassificationRepository;
-import com.egg.api.repository.filter.ClassificationFilter;
-import com.egg.api.repository.projection.ClassificationResume;
-import com.egg.api.service.ClassificationService;
+import com.egg.domain.model.Classification;
+import com.egg.domain.repository.ClassificationRepository;
+import com.egg.domain.repository.filter.ClassificationFilter;
+import com.egg.domain.repository.projection.ClassificationResume;
+import com.egg.domain.service.ClassificationService;
 
 @RestController
 @RequestMapping("/Classifications")

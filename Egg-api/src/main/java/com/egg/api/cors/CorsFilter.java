@@ -16,7 +16,7 @@ import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
-import com.egg.api.config.property.EggApiProperty;
+import com.egg.infrastuture.config.property.EggApiProperty;
 
 @Component
 @Order(Ordered.HIGHEST_PRECEDENCE)

@@ -20,10 +20,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.egg.api.event.ResourceCreatedEvent;
-import com.egg.api.model.EggLot;
-import com.egg.api.repository.EggLotRepository;
-import com.egg.api.repository.filter.EggLotFilter;
-import com.egg.api.service.EggLotService;
+import com.egg.domain.model.EggLot;
+import com.egg.domain.repository.EggLotRepository;
+import com.egg.domain.repository.filter.EggLotFilter;
+import com.egg.domain.service.EggLotService;
 
 @RestController
 @RequestMapping("/EggLots")

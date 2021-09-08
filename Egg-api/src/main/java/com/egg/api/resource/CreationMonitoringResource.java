@@ -20,10 +20,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.egg.api.event.ResourceCreatedEvent;
-import com.egg.api.model.CreationMonitoring;
-import com.egg.api.repository.CreationMonitoringRepository;
-import com.egg.api.repository.filter.CreationMonitoringFilter;
-import com.egg.api.service.CreationMonitoringService;
+import com.egg.domain.model.CreationMonitoring;
+import com.egg.domain.repository.CreationMonitoringRepository;
+import com.egg.domain.repository.filter.CreationMonitoringFilter;
+import com.egg.domain.service.CreationMonitoringService;
 
 @RestController
 @RequestMapping("/CreationMonitorings")
